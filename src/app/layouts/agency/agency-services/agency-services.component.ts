@@ -70,10 +70,10 @@ export class AgencyServicesComponent implements OnInit {
     this.servicesThree[2] = this.services[5];
   }
 
-  openVerticallyCentered(content, id) {
+  openVerticallyCentered(content, id: number) {
     this.result = this.services.find(x => x.id === id);
 
-    this.modalService.open(content);
+    this.modalService.open(content, { centered: true, size: 'md' });
   }
 
 }

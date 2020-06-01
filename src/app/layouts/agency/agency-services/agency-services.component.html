@@ -25,7 +25,7 @@
                     <div class="col-sm-4 center-content unset-height">
                         <ul class="icon-collection" [@fadeInRight]="{ value: fadeInRight, params: { timing: 3, delay: 0 } }">
                             <li class="about-icon">
-                                <a href="#" class="center-content" (click)="openVerticallyCentered(content, services[0].id)">
+                                <a href="javascript:void(0)" class="center-content" (click)="openVerticallyCentered(content, services[0].id)">
                                     <img src="{{services[0].img}}" alt="{{services[0].title}}">
                                     <h5>{{services[0].title}}</h5>
                                 </a>
@@ -35,7 +35,7 @@
                     <div class="col-sm-4 center-content unset-height">
                         <ul class="icon-collection" [@fadeInRight]="{ value: fadeInRight, params: { timing: 3, delay: 2 } }">
                             <li class="about-icon" *ngFor="let service of servicesTwo">
-                                <a href="#" class="center-content" (click)="openVerticallyCentered(content, service.id)">
+                                <a href="javascript:void(0)" class="center-content" (click)="openVerticallyCentered(content, service.id)">
                                     <img src="{{service.img}}" alt="{{service.title}}">
                                     <h5>{{service.title}}</h5>
                                 </a>
@@ -45,7 +45,7 @@
                     <div class="col-sm-4 center-content unset-height">
                         <ul class="icon-collection" [@fadeInRight]="{ value: fadeInRight, params: { timing: 3, delay: 3 } }">
                             <li class="about-icon" *ngFor="let service of servicesThree">
-                                <a href="#" class="center-content" (click)="openVerticallyCentered(content, service.id)">
+                                <a href="javascript:void(0)" class="center-content" (click)="openVerticallyCentered(content, service.id)">
                                     <img src="{{service.img}}" alt="{{service.title}}">
                                     <h5>{{service.title}}</h5>
                                 </a>
