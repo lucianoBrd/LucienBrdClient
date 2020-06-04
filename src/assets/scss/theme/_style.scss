@@ -3914,7 +3914,6 @@ booking section end
     .contact-heading {
       font-weight: 400;
       margin-bottom: 15px;
-      color: #591e1e;
     }
     .contact-sub-text {
       font-weight: 300;
@@ -3927,9 +3926,9 @@ booking section end
       margin-bottom: 30px;
       input, textarea {
         width: 100%;
-        background-color: $black;
+        background-color: $light;
         padding: 15px 30px;
-        border: 1px solid $light;
+        border: 1px solid #CCE7E8;
         border-radius: 25px;
         color: $white;
         &:focus {
@@ -4668,6 +4667,18 @@ yoga-theme css end
 /*************************
 25. agency css start
 *************************/
+.agency-page {
+  display: block;
+  position: relative;
+  padding: 0;
+  width: auto;
+  height: 200px;
+  background-position: bottom;
+}
+
+.agency-title {
+  padding-top: 150px;
+}
 .agency {
   h1, h2 {
     font-family: 'Poppins', sans-serif;

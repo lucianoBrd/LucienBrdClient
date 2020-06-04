@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { ElementsRoutingModule } from './elements-routing.module';
+import { SharedModule } from '../shared/shared.module'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CountToModule } from 'angular-count-to';
+
+import { ElementsComponent } from './elements.component';
+import { ContactComponent } from './contact/contact.component';
+import { FormationComponent } from './formation/formation.component';
+import { LayoutsModule } from '../layouts/layouts.module'
+
+@NgModule({
+  declarations: [ElementsComponent, ContactComponent, FormationComponent],
+  imports: [
+    CommonModule,
+    ElementsRoutingModule,
+    SharedModule,
+    NgbModule,
+    CarouselModule,
+    CountToModule,
+    LayoutsModule
+  ]
+})
+export class ElementsModule { }

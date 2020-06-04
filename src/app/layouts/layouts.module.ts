@@ -57,7 +57,11 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
     NgxMasonryModule
   ],
 
-  exports: [],
+  exports: [
+    AgencyNavComponent,
+    AgencyFooterComponent, 
+    AgencyCopyrightComponent
+  ],
 
   providers: [
     {

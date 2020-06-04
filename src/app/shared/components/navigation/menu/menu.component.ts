@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu, NavService } from '../../../service/nav.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -13,10 +14,13 @@ export class MenuComponent implements OnInit {
   public active: boolean = false;
   public activeChildItem : string = '' 
   public overlay: boolean = false;
+  public url: string = "";
   
-  constructor( public navServices: NavService) { }
+  constructor( public navServices: NavService, private router: Router ) { }
  
   ngOnInit() {
+    this.url = this.router.url;
+
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems
     });

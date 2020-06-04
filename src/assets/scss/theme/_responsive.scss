@@ -4838,6 +4838,12 @@
   }
 
   //inner pages start
+  .agency-page {
+    background-color: $dark;
+  }
+  .agency-title {
+    filter: brightness(0) invert(1);
+  }
   .agency {
     &.blog {
       .blog-agency {

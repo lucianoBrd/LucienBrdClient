@@ -1,0 +1,33 @@
+<div class="agency-page" [ngStyle]="{'background-image': 'url(assets/images/agency/slider/slider.png)'}">
+    <div class="container agency-title">
+        <div class="row">
+            <div class="col-12">
+                <div class="title title2 title-inner">
+                    <div class="main-title">
+                        <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
+                            <span>formation</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="agency-formation-body" class="yoga event bg bg-gradient-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let formation of formations">
+                <div class="event-container d-flex">
+                    <div id="formation-circle" class="yoga-circle" [ngStyle]="{'background-image': 'url(' + formation.img + ')'}">
+                    </div>
+                    <div class="event-info center-content">
+                        <h4 class="text-white address">{{formation.type}}</h4>
+                        <h6 class="text-white time">{{formation.date}}</h6>
+                        <h6 class="text-white city"><i class="fa fa-map-marker m-r-5" aria-hidden="true"></i>{{formation.place}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
