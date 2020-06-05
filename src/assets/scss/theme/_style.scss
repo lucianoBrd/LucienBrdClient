@@ -8841,7 +8841,7 @@ error css end
     z-index: 95;
     position: absolute;
     transform: translateX(-50px);
-    top: 75%;
+    top: 45%;
     pointer-events: none;
     width: 150px;
     animation: rocket-movement 20s linear infinite both running;
@@ -8870,7 +8870,7 @@ error css end
   .box_astronaut {
     z-index: 110 !important;
     position: absolute;
-    top: 60%;
+    top: 30%;
     right: 16%;
     will-change: transform;
     animation: move-astronaut 5s infinite linear both alternate;
@@ -8908,7 +8908,7 @@ error css end
   }
 
   .glowing_stars .star:nth-child(1) {
-    top: 80%;
+    top: 50%;
     left: 25%;
     animation: glow-star 2s infinite ease-in-out alternate 1s;
   }
@@ -8926,13 +8926,13 @@ error css end
   }
 
   .glowing_stars .star:nth-child(4) {
-    top: 75%;
+    top: 45%;
     left: 80%;
     animation: glow-star 2s infinite ease-in-out alternate 7s;
   }
 
   .glowing_stars .star:nth-child(5) {
-    top: 90%;
+    top: 50%;
     left: 50%;
     animation: glow-star 2s infinite ease-in-out alternate 9s;
   }

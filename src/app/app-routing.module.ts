@@ -5,11 +5,6 @@ import { ElementsComponent } from './elements/elements.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'agency',
-    pathMatch: 'full',
-  },
-  {
-    path: '',
     component: AgencyComponent
   },
   {
@@ -19,6 +14,11 @@ export const routes: Routes = [
     data: {
       
     }
+  },
+  {
+    path: '**',
+    redirectTo: '/page/404',
+    pathMatch: 'full',
   },
 ];
 

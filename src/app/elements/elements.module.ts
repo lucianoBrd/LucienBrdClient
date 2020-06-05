@@ -11,9 +11,10 @@ import { ElementsComponent } from './elements.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormationComponent } from './formation/formation.component';
 import { LayoutsModule } from '../layouts/layouts.module'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [ElementsComponent, ContactComponent, FormationComponent],
+  declarations: [ElementsComponent, ContactComponent, FormationComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,
