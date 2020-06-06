@@ -4679,6 +4679,36 @@ yoga-theme css end
 .agency-title {
   padding-top: 150px;
 }
+
+.project-image {    
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 10s;
+  transition: 10s;
+}
+
+.project-image:hover {
+  background-position: center 100%!important;
+  -webkit-transition: 10s;
+  transition: 10s;
+  opacity: 0.2;
+}
+
+.project-nav-bar {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  position: relative;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 0 25px 0 #dcdcdc;
+  box-shadow: 0 0 25px 0 #dcdcdc;
+  padding-top: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
 .agency {
   h1, h2 {
     font-family: 'Poppins', sans-serif;
@@ -5191,8 +5221,8 @@ yoga-theme css end
               i{
                 transition: all 0.4s;
                 &:hover{
-                  background-color: white;
-                  color: #061a5e;
+                  background-color: #061a5e;
+                  color: white;
                 }
               }
             }
@@ -8053,9 +8083,9 @@ popup css start
               height: 30px;
               width: 30px;
               font-size: 16px;
-              border: 2px solid $white;
+              border: 2px solid $dark;
               border-radius: 100%;
-              color: $white;
+              color: $dark;
             }
           }
         }

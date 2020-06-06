@@ -24,8 +24,9 @@
                         <ng-template carouselSlide class="item speker-container">
                             <div class="text-center">
                                 <div class="team-img">
-                                    <img [src]="expert.img" alt="" class="img-fluid">
-                                    <div class="overlay"></div>
+                                    <div class="project-nav-bar" [ngStyle]="{'background-image': 'url(assets/images/navbar.jpg)'}">
+                                        <div [ngStyle]="{'background-image': 'url(' + expert.img + ')'}" class="project-image"></div>
+                                    </div>
                                     <div class="social">
                                         <ul>
                                             <li>
