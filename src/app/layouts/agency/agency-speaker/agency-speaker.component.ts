@@ -13,7 +13,7 @@ export class AgencySpeakerComponent implements OnInit {
   }
   experts = [
     { 
-     img:"assets/images/event/l3-2.jpg",
+     img:"assets/images/event/ngy.png",
      name:"Sam Rowling",
      designation:"site"
     },

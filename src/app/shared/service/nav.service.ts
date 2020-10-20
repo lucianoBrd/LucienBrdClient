@@ -24,9 +24,10 @@ export class NavService {
   constructor() {   }
 
   MENUITEMS: Menu[] = [
-     { path: '/', title: 'Accueil',  type: 'extTabLink' },
-     { path: '/page/contact', title: 'Contact',  type: 'extTabLink' },
-     { path: '/page/formation', title: 'Formation',  type: 'extTabLink' },
+     { path: '/', title: 'Accueil',  type: 'link' },
+     { path: '/page/projets', title: 'Projets',  type: 'link' },
+     { path: '/page/contact', title: 'Contact',  type: 'link' },
+     { path: '/page/formation', title: 'Formation',  type: 'link' },
    ]
   
   	// Array
