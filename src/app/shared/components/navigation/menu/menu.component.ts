@@ -15,12 +15,13 @@ export class MenuComponent implements OnInit {
   public activeChildItem : string = '' 
   public overlay: boolean = false;
   public url: string = "";
+  public mobile: boolean = false;
   
   constructor( public navServices: NavService, private router: Router ) { }
  
   ngOnInit() {
     this.url = this.router.url;
-
+    this.mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems
     });

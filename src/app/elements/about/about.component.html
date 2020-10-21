@@ -1,0 +1,60 @@
+<section class="gym format" [ngStyle]="{'background-image': 'url(assets/images/agency/team/expert-background.png)', 'background-repeat':'space'}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="center-text">
+                    <div class="text-center title title2 title-inner">
+                        <div class="main-title">
+                            <h2 class="font-primary borders text-center text-uppercase m-b-0"><span class="">à
+                                    propos</span></h2>
+                        </div>
+                        <div class="format-sub-text mb-0">
+                            <p class="p-light about-para">
+                                Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de
+                                connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.
+                            </p>
+                            <p class="p-light about-para">
+                                Les travaux que je peux effectuer sont des solutions pour le web : E-Commerce, site
+                                vitrine…
+                            </p>
+                            <p class="p-light about-para">
+                                Je peux vous établir gratuitement un devis sur simple demande. La satisfaction du client
+                                étant ma priorité, je mettrai tout en œuvre pour répondre à vos attentes et exigences.
+
+                                Je ne me contente pas de simplement développer votre projet : je vous propose une étude
+                                minutieuse et je peux vous apporter mon expertise pour couvrir tous vos besoins en
+                                termes de communication, publicité, référencement…
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8 offset-md-2 agency format speaker expert-bg">
+                <div class="container" [ngStyle]="{'max-width': '500px'}">
+                    <div class="item speker-container">
+                        <div class="text-center">
+                            <div class="team-img">
+                                <img src="assets/images/luciano.jpg" alt="" class="img-fluid">
+                                <div class="overlay"></div>
+                                <div class="social">
+                                    <ul>
+                                        <li *ngFor="let social of socials">
+                                            <a href="{{social.link}}">
+                                                <i class="fa fa-{{social.fa}} center-content" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="employee">
+                                <h5 class="e-name text-center font-secondary">Lucien Burdet</h5>
+                                <h6 class="post text-center ">{{age}} ans</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -27,7 +27,9 @@ export class NavService {
      { path: '/', title: 'Accueil',  type: 'link' },
      { path: '/page/projets', title: 'Projets',  type: 'link' },
      { path: '/page/contact', title: 'Contact',  type: 'link' },
-     { path: '/page/formation', title: 'Formation',  type: 'link' },
+     { path: '/page/formation', title: 'Formations',  type: 'link' },
+     { path: '/page/cv', title: 'CV',  type: 'link' },
+     { path: '/page/a-propos', title: 'à propos',  type: 'link' },
    ]
   
   	// Array

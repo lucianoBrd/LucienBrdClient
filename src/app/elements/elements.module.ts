@@ -8,6 +8,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CountToModule } from 'angular-count-to';
 
 import { ElementsComponent } from './elements.component';
+import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormationComponent } from './formation/formation.component';
 import { LayoutsModule } from '../layouts/layouts.module'
@@ -15,7 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
-  declarations: [ElementsComponent, ContactComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, ContactComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,
