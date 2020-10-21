@@ -14,9 +14,10 @@ import { FormationComponent } from './formation/formation.component';
 import { LayoutsModule } from '../layouts/layouts.module'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { CvComponent } from './cv/cv.component';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, ContactComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,

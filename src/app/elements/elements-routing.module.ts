@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { CvComponent } from './cv/cv.component';
 import { FormationComponent } from './formation/formation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -20,6 +21,13 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
+         data: {
+          
+        }
+      },
+      {
+        path: 'cv',
+        component: CvComponent,
          data: {
           
         }
