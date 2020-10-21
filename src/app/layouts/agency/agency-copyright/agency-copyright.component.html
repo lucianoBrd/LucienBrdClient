@@ -6,14 +6,31 @@
                 <div class="link-horizontal">
                     <ul>
                         <li>
-                            <a class="copyright-text" href="javascript:void(0)">Politique de confidentialité</a>
+                            <a class="copyright-text" href="javascript:void(0)" (click)="openVerticallyCentered(content, 1)">Politique de confidentialité</a>
                         </li>
                         <li>
-                            <a class="copyright-text" href="javascript:void(0)">Termes &amp; Conditions</a>
+                            <a class="copyright-text" href="javascript:void(0)" (click)="openVerticallyCentered(content, 2)">Termes &amp; Conditions</a>
                         </li>
                     </ul>
                 </div>
             </div>
+            <ng-template #content let-modal>
+                <div class="login-modal">
+                    <div class="modal-header">
+                        <button aria-label="Close" (click)="modal.dismiss('Cross click')" class="close"
+                            data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div *ngIf="result" class="modal-body text-center">
+                        <h3 class="m-b-20">{{result.title}}</h3>
+                        <p>{{result.description}}</p>
+                        <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
+                            Fermer
+                        </a>
+                    </div>
+                </div>
+            </ng-template>
             <div class="col-sm-6">
                 <div>
                     <h6 class="copyright-text text-white text-right">Copyright ©{{year}} Lucien Burdet
