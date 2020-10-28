@@ -18,14 +18,19 @@
 <section class="agency blog blog-sec blog-sidebar blog-split">
     <div class="container">
         <div class="row pl-0 pr-0">
-            <div class="col-lg-12">
+            <div class="col-lg-12" *ngIf="!projects">
+                <app-loader-bis></app-loader-bis>
+            </div>
+            <div class="col-lg-12" *ngIf="projects">
                 <div class="row">
-                    <div class="col-12 blog-sec blog-list" *ngFor="let project of projects">
+                    <div class="col-12 blog-sec blog-list" *ngFor="let project of projects; let i = index">
                         <div class="blog-agency">
                             <div class="row blog-contain pl-0 pr-0">
-                                <div class="col-xl-3 col-lg-4 col-md-6 p-0" [ngClass]="project.id%2==0?'order-md-2':''">
-                                    <div class=" text-center">
-                                        <img [src]="project.img" alt="" class="img-fluid blog-img">
+                                <div class="col-xl-3 col-lg-4 col-md-6 p-0" [ngClass]="i%2==0?'':'order-md-2'">
+                                    <div class="team-img">
+                                        <div class="project-nav-bar" [ngStyle]="{'background-image': 'url(assets/images/navbar.jpg)'}">
+                                            <div [ngStyle]="{'background-image': 'url(' + imagePath + project.image + ')'}" class="project-image"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-9 col-lg-8 col-md-6 p-0">
@@ -36,14 +41,27 @@
                                                     <div class="center-text">
                                                         <i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>
                                                         <h6 class="m-r-25 font-blog">{{project.date}}</h6>
-                                                        <i class="fa fa-map-marker m-r-10" aria-hidden="true"></i>
+
+                                                        <i class="fa fa-file m-r-10" aria-hidden="true"></i>
                                                         <h6 class="font-blog">{{project.type}}</h6>
                                                     </div>
                                                 </div>
                                                 <h5 class="blog-head font-600">{{project.title}}</h5>
-                                                <p class="para2">test</p>
-                                                <div class="btn-bottom m-t-20">
-                                                    <a href="#" class="text-uppercase">test</a>
+                                                <p class="para2">{{project.content}}</p>
+                                                
+                                                <div  class="btn-bottom m-t-20">
+                                                    <a *ngIf="project.url" href="{{project.url}}" target="_blank" class="text-uppercase m-r-25">
+                                                        <i class="fa fa-globe m-r-10" aria-hidden="true"></i>
+                                                        Site
+                                                    </a>
+                                                    <a *ngIf="project.git" href="{{project.git}}" target="_blank" class="text-uppercase m-r-25">
+                                                        <i class="fa fa-github m-r-10" aria-hidden="true"></i>
+                                                        Git
+                                                    </a>
+                                                    <a *ngIf="project.document" href="{{documentPath + project.document}}" target="_blank" class="text-uppercase m-r-25">
+                                                        <i class="fa fa-download m-r-10" aria-hidden="true"></i>
+                                                        Télécharger
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
