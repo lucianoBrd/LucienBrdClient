@@ -1,10 +1,11 @@
 export interface Project {
     id: number,
-    date: string,
+    image: string,
     title: string,
     type: string,
+    date: string,
     url: string,
     git: string,
     content: string,
-    img: string;
+    document: string;
 }

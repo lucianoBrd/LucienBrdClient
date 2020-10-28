@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from '../models/modal.interface';
+import { Modal } from 'src/app/shared/models/modal.interface';
 
 @Component({
   selector: 'app-agency-copyright',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Formation } from 'src/app/layouts/agency/models/formation.interface';
+import { Formation } from 'src/app/shared/models/formation.interface';
 
 @Component({
   selector: 'app-formation',

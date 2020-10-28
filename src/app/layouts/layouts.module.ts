@@ -24,7 +24,7 @@ import { AgencyHeaderComponent } from './agency/agency-header/agency-header.comp
 import { AgencyNavComponent } from './agency/agency-nav/agency-nav.component';
 import { AgencyPricingComponent } from './agency/agency-pricing/agency-pricing.component';
 import { AgencyServicesComponent } from './agency/agency-services/agency-services.component';
-import { AgencySpeakerComponent } from './agency/agency-speaker/agency-speaker.component';
+import { AgencyProjectsComponent } from './agency/agency-projects/agency-projects.component';
 import { AgencyTestimonialComponent } from './agency/agency-testimonial/agency-testimonial.component';
 import { AgencyVideoComponent } from './agency/agency-video/agency-video.component';
 // Agency Layout
@@ -36,7 +36,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
 
 @NgModule({
   declarations: [
-    AgencyComponent, AgencyNavComponent, AgencyHeaderComponent, AgencyContentComponent, AgencyServicesComponent, AgencyVideoComponent, AgencyCounterComponent, AgencyPricingComponent, AgencySpeakerComponent, AgencyTestimonialComponent, AgencyBlogComponent, AgencyFooterComponent, AgencyCopyrightComponent],
+    AgencyComponent, AgencyNavComponent, AgencyHeaderComponent, AgencyContentComponent, AgencyServicesComponent, AgencyVideoComponent, AgencyCounterComponent, AgencyPricingComponent, AgencyProjectsComponent, AgencyTestimonialComponent, AgencyBlogComponent, AgencyFooterComponent, AgencyCopyrightComponent],
 
   imports: [
     CommonModule,
@@ -59,7 +59,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
 
   exports: [
     AgencyNavComponent,
-    AgencyFooterComponent, 
+    AgencyFooterComponent,
     AgencyCopyrightComponent
   ],
 

@@ -1,4 +1,4 @@
-<!-- speaker section start-->
+<!-- project section start-->
 <section class="agency format speaker expert-bg" [ngStyle]="{'background-image': 'url(assets/images/agency/team/expert-background.png)'}">
     <div class="container">
         <div class="row">
@@ -18,24 +18,27 @@
                     <a [routerLink]="['/page/projets']" class=" btn btn-default btn-gradient text-white">voir plus</a>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-8">
-                <owl-carousel-o [options]="speakerCarouselOptions" class="speaker-slider">
-                    <ng-container *ngFor="let expert of experts">
+            <div class="col-lg-9 col-md-8" *ngIf="!projects">
+                <app-loader-bis></app-loader-bis>
+            </div>
+            <div class="col-lg-9 col-md-8" *ngIf="projects">
+                <owl-carousel-o  [options]="projectCarouselOptions" class="speaker-slider">
+                    <ng-container *ngFor="let project of projects">
                         <ng-template carouselSlide class="item speker-container">
                             <div class="text-center">
                                 <div class="team-img">
                                     <div class="project-nav-bar" [ngStyle]="{'background-image': 'url(assets/images/navbar.jpg)'}">
-                                        <div [ngStyle]="{'background-image': 'url(' + expert.img + ')'}" class="project-image"></div>
+                                        <div [ngStyle]="{'background-image': 'url(' + imagePath + project.image + ')'}" class="project-image"></div>
                                     </div>
                                     <div class="social">
                                         <ul>
                                             <li>
-                                                <a href="javascript:void(0)">
+                                                <a *ngIf="project.git" target="_blank" href="{{project.git}}">
                                                     <i class="fa fa-github center-content" aria-hidden="true"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)">
+                                                <a *ngIf="project.url" target="_blank" href="{{project.url}}">
                                                     <i class="fa fa-globe center-content" aria-hidden="true"></i>
                                                 </a>
                                             </li>
@@ -43,8 +46,8 @@
                                     </div>
                                 </div>
                                 <div class="employee">
-                                    <h5 class="e-name text-center font-secondary">{{expert.name}}</h5>
-                                    <h6 class="post text-center ">{{expert.designation}}</h6>
+                                    <h5 class="e-name text-center font-secondary">{{project.title}}</h5>
+                                    <h6 class="post text-center ">{{project.type}}</h6>
                                 </div>
                             </div>
                         </ng-template>
@@ -54,4 +57,4 @@
         </div>
     </div>
 </section>
-<!-- speaker section end-->
+<!-- project section end-->

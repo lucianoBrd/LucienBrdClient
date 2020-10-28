@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Social } from '../models/social.interface';
+import { Social } from 'src/app/shared/models/social.interface';
 
 @Component({
   selector: 'app-agency-footer',

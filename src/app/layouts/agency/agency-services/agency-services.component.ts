@@ -2,7 +2,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fadeInRight } from 'ng-animate';
-import { Service } from '../models/service.interface';
+import { Service } from 'src/app/shared/models/service.interface';
 
 @Component({
   selector: 'app-agency-services',

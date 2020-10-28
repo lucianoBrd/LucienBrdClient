@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Social } from 'src/app/layouts/agency/models/social.interface';
+import { Social } from 'src/app/shared/models/social.interface';
 
 @Component({
   selector: 'app-about',

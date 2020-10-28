@@ -7,6 +7,7 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ElementsModule } from './elements/elements.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     CarouselModule,
     ScrollToModule,
     SharedModule,
+    ElementsModule,
     RouterModule.forRoot(routes, { useHash: false, anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
 
   ],

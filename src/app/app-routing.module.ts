@@ -12,7 +12,7 @@ export const routes: Routes = [
     component: ElementsComponent,
     loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule),
     data: {
-      
+
     }
   },
   {
@@ -28,7 +28,7 @@ export const routes: Routes = [
     anchorScrolling: 'enabled',
     scrollPositionRestoration: 'enabled',
     initialNavigation: 'enabled'
-})],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
