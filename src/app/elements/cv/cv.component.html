@@ -16,8 +16,11 @@
 <section class="portfolio p-0">
     <div class="container-fluid p-0">
         <div class="row">
-            <div class="col-12">
-                <div class="img-cv" [ngStyle]="{'background-image': 'url(assets/images/CV_BURDET_LUCIEN.jpg)'}" [class.img-cv-no-mobile]="!mobile"></div>
+            <div class="col-12" *ngIf="!cv">
+                <app-loader-bis></app-loader-bis>
+            </div>
+            <div class="col-12" *ngIf="cv">
+                <div class="img-cv" [ngStyle]="{'background-image': 'url(' + documentPath + cv.document + ')'}" [class.img-cv-no-mobile]="!mobile"></div>
             </div>
         </div>
     </div>
