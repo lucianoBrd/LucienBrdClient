@@ -1,7 +1,7 @@
 export interface Formation {
     id: number,
-    date: string,
+    image: string,
+    title: string,
     place: string,
-    type: string,
-    img: string;
+    date: string;
 }

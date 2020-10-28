@@ -4559,7 +4559,10 @@ wedding-theme css end
       .yoga-circle {
         height: 90px;
         width: 90px;
-        background: $white;
+        background-color: #1c2440;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
         border-radius: 100%;
         padding: 18px 20px;
         text-align: center;
