@@ -1,73 +1,59 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fadeInRight } from 'ng-animate';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Service } from 'src/app/shared/models/service.interface';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-agency-services',
   templateUrl: './agency-services.component.html',
   styleUrls: ['./agency-services.component.scss'],
   animations: [
-    trigger('fadeInRight', [transition('* => *', useAnimation(fadeInRight))])]
+    trigger('fadeInRight', [transition('* => *', useAnimation(fadeInRight))])
+  ],
+  providers: [DataService]
 })
-export class AgencyServicesComponent implements OnInit {
+export class AgencyServicesComponent implements OnInit, OnDestroy {
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   fadeInRight: any;
 
-  result: Service;
+  public result: Service;
 
-  services: Service[] = [
-    { 
-      id: 1,
-      img: "assets/images/agency/service/web.png",
-      title: "Web",
-      description: "Je peux développer tous types de site : E-commerce, site vitrine, blog..."
-    },
-    { 
-      id: 2,
-      img: "assets/images/agency/service/communication.png",
-      title: "Communication",
-      description: "Vous ne savez pas comment bien utiliser les réseaux sociaux ? Je peux gérer vos comptes afin d’accroître votre notoriété."
-    },
-    { 
-      id: 3,
-      img: "assets/images/agency/service/ads.png",
-      title: "Publicité",
-      description: "Afin de d’augmenter votre présence sur internet il vous faut les meilleures publicités : image, bannière, vidéo..."
-    },
-    { 
-      id: 4,
-      img: "assets/images/agency/service/design.png",
-      title: "Web design",
-      description: "Je respecte les derniers standards et normes de design afin de vous proposer un produit numérique beau et fonctionnel."
-    },
-    { 
-      id: 5,
-      img: "assets/images/agency/service/logo.png",
-      title: "Logo",
-      description: "site"
-    },
-    { 
-      id: 6,
-      img: "assets/images/agency/service/referencement.png",
-      title: "Référencement",
-      description: "site"
-    },
-  ];
+  public services: Service[];
+  public imagePath: String;
+  public servicesTwo: Service[] = [];
+  public servicesThree: Service[] = [];
 
-  servicesTwo: Service[] = [];
-  servicesThree: Service[] = [];
-  
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private dataService: DataService) {
+    this.dataService.PAGE = '/service';
+  }
 
   ngOnInit() {
-    this.servicesTwo[0] = this.services[1];
-    this.servicesTwo[1] = this.services[2];
+    this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
+      this.services = data['services'];
+      this.imagePath = data['imagePath'];
+      
+      if (this.services && this.services.length == 6) {
+        this.servicesTwo[0] = this.services[1];
+        this.servicesTwo[1] = this.services[2];
 
-    this.servicesThree[0] = this.services[3];
-    this.servicesThree[1] = this.services[4];
-    this.servicesThree[2] = this.services[5];
+        this.servicesThree[0] = this.services[3];
+        this.servicesThree[1] = this.services[4];
+        this.servicesThree[2] = this.services[5];
+      } else {
+        this.services = null;
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
   openVerticallyCentered(content, id: number) {

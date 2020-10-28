@@ -7,12 +7,13 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-agency-projects',
   templateUrl: './agency-projects.component.html',
-  styleUrls: ['./agency-projects.component.scss']
+  styleUrls: ['./agency-projects.component.scss'],
+  providers: [DataService]
 })
 export class AgencyProjectsComponent implements OnInit, OnDestroy  {
 
   public projects: Project[];
-  public imagePath;
+  public imagePath: String;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
