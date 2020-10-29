@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Project } from 'src/app/shared/models/project.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { MetaService } from 'src/app/shared/service/meta.service';
 
 @Component({
   selector: 'app-projects',
@@ -18,11 +19,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private metaService: MetaService) {
     this.dataService.PAGE = '/project';
   }
 
   ngOnInit() {
+    /* Set title + meta */
+    this.metaService.setTitle('Projets');
+    this.metaService.setDescription('Les projets m\'ont beaucoup apporté : savoir, analyse, autonomie....');
+
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
       this.projects = data['projects'];
       this.imagePath = data['imagePath'];

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CustomizerService } from './shared/service/customizer.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { MetaService } from './shared/service/meta.service';
 
 @Component({
   selector: 'app-root',
@@ -13,23 +13,16 @@ export class AppComponent {
   title = 'lucienBrdClient';
   public layoutType: string = 'dark'
 
-  constructor(public customize: CustomizerService, private router: Router, private titleService: Title, private metaService: Meta) {
-    this.setTitle("Lucien Burdet");
-    this.metaService.updateTag(
-      {
-        name: 'description',
-        content: 'Lucien Burdet créateur de site internet pour les professionnels et particuliers.'
-      }
-    );
+  constructor(public customize: CustomizerService, private router: Router, private metaService: MetaService) {
+    /* Set title + meta */
+    this.metaService.setTitle('Accueil');
+    this.metaService.setDescription('Lucien Burdet créateur de site internet pour les professionnels et particuliers.');
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.url = event.url;
       }
     });
-  }
-
-  public setTitle(newTitle: string) {
-    this.titleService.setTitle(newTitle);
   }
 
   customizeLayoutVersion(val) {

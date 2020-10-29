@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MetaService } from 'src/app/shared/service/meta.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private metaService: MetaService) { }
 
   ngOnInit() {
+    /* Set title + meta */
+    this.metaService.setTitle('Contact');
+    this.metaService.setDescription('Je peux vous établir gratuitement un devis sur simple demande. La satisfaction du client étant ma priorité, je mettrai tout en œuvre pour répondre à vos attentes et exigences.');
+
   }
 
 }

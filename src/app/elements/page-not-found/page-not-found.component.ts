@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MetaService } from 'src/app/shared/service/meta.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private metaService: MetaService) { }
 
   ngOnInit() {
+    /* Set title + meta */
+    this.metaService.setTitle('404');
+    this.metaService.setDescription('a page que vous essayez d\'atteindre n\'est pasdisponible actuellement. Cela peut être dû au fait que la page n\'existe pas ou a été déplacée.');
   }
 
 }
