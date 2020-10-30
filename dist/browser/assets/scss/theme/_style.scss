@@ -58,6 +58,11 @@
 /**************************
  1. general css start
 *************************/
+.cookie-law-wrapper .copy {
+  background-color: $dark;
+  font-family: 'Poppins', sans-serif;
+  color: $secondary;
+}
 ::selection {
   background-color: $primary;
   color: $white;

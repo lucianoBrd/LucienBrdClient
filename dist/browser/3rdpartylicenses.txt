@@ -148,6 +148,9 @@ SOFTWARE.
 angular-tilt
 MIT
 
+angular2-cookie-law
+MIT
+
 classlist.js
 Dedicated to the public domain
 This is free and unencumbered software released into the public domain.

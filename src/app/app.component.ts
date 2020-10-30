@@ -11,7 +11,8 @@ import { MetaService } from './shared/service/meta.service';
 export class AppComponent {
   public url: any;
   title = 'lucienBrdClient';
-  public layoutType: string = 'dark'
+  public layoutType: string = 'dark';
+  public cookie: string = 'En poursuivant votre navigation sur le site, vous acceptez notre utilisation des cookies.';
 
   constructor(public customize: CustomizerService, private router: Router, private metaService: MetaService) {
     /* Set title + meta */
