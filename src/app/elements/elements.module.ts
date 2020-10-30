@@ -15,6 +15,7 @@ import { LayoutsModule } from '../layouts/layouts.module'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { CvComponent } from './cv/cv.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ElementsComponent, AboutComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
@@ -23,6 +24,7 @@ import { CvComponent } from './cv/cv.component';
     ElementsRoutingModule,
     SharedModule,
     NgbModule,
+    FormsModule,
     CarouselModule,
     CountToModule,
     LayoutsModule
