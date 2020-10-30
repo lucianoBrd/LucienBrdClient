@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -11,6 +11,8 @@ export class DataService {
   private REST_API_SERVER = "https://api.lucien-brd.com";
 
   public PAGE = null;
+
+  public PARAMS = null;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,6 +30,9 @@ export class DataService {
 
   public sendGetRequest(){
     if (this.PAGE){
+      if(this.PARAMS){
+        return this.httpClient.post(this.REST_API_SERVER + this.PAGE, JSON.stringify(this.PARAMS)).pipe(retry(3), catchError(this.handleError));
+      }
       return this.httpClient.get(this.REST_API_SERVER + this.PAGE).pipe(retry(3), catchError(this.handleError));
     }
   }

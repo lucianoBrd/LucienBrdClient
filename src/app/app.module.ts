@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { ScrollToModule } from 'ng2-scroll-to-el';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule, routes } from './app-routing.module';
@@ -28,6 +29,8 @@ import { SharedModule } from './shared/shared.module';
     ScrollToModule,
     SharedModule,
     ElementsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     RouterModule.forRoot(routes, { useHash: false, anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
 
   ],

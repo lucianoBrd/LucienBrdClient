@@ -49,6 +49,7 @@
     "hammerjs": "^2.0.8",
     "mousetrap": "^1.6.5",
     "ng-animate": "^0.3.4",
+    "ng-recaptcha": "^6.0.2",
     "ng2-animate-on-scroll": "^1.2.0",
     "ng2-scroll-to-el": "^1.2.1",
     "ng5-slider": "^1.2.4",

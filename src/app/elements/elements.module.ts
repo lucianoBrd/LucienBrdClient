@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProjectsComponent } from './projects/projects.component';
 import { CvComponent } from './cv/cv.component';
 import { FormsModule } from '@angular/forms';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [ElementsComponent, AboutComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
@@ -27,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     CarouselModule,
     CountToModule,
-    LayoutsModule
+    LayoutsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ]
 })
 export class ElementsModule { }

@@ -13,12 +13,15 @@ export class ContactComponent implements OnInit {
   private name: String;
   private email: String;
   private message: String;
+  private captcha: String;
 
   public error: Boolean;
   public errorMail: Boolean;
   public sending: Boolean;
   public hasSent: Boolean;
   public hasSentError: Boolean;
+
+  public siteKey: String = '6LfWON0ZAAAAABVgPLWN-KFJXz2byUnwPzp2Z8oC';
 
   constructor(private dataService: DataService, private metaService: MetaService) { }
 
@@ -41,7 +44,7 @@ export class ContactComponent implements OnInit {
     this.hasSent = false;
     this.hasSentError = false;
 
-    if (contactForm.valid) {
+    if (contactForm.valid && this.captcha) {
       this.name = contactForm.controls['name'].value;
       this.email = contactForm.controls['email'].value;
       this.message = contactForm.controls['message'].value;
@@ -50,9 +53,15 @@ export class ContactComponent implements OnInit {
         this.sending = true;
 
         /* Sent to api */
-        this.dataService.PAGE = '/contact/' + this.name + '/' + this.email + '/' + this.message;
+        this.dataService.PARAMS = {
+          captcha: this.captcha, 
+          name: this.name, 
+          mail: this.email, 
+          message: this.message
+        };
+        this.dataService.PAGE = '/contact';
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
-          if (data['error']) {
+          if (data['error'] == true) {
             this.hasSentError = true;
           } else {
             this.hasSent = true;
@@ -68,6 +77,10 @@ export class ContactComponent implements OnInit {
     } else {
       this.error = true;
     }
+  }
+
+  resolved(captchaResponse: string) {
+    this.captcha = captchaResponse;
   }
 
   private ValidateEmail(mail: String) {
