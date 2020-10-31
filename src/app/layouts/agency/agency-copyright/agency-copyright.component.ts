@@ -1,39 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from 'src/app/shared/models/modal.interface';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Politic } from 'src/app/shared/models/politic.interface';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-agency-copyright',
   templateUrl: './agency-copyright.component.html',
-  styleUrls: ['./agency-copyright.component.scss']
+  styleUrls: ['./agency-copyright.component.scss'],
+  providers: [DataService]
 })
-export class AgencyCopyrightComponent implements OnInit {
+export class AgencyCopyrightComponent implements OnInit, OnDestroy {
   public year: number = new Date().getFullYear();
-  public result: Modal;
 
-  public modals: Modal[] = [
-    { 
-      id: 1,
-      title: "Politique de confidentialité",
-      description: "Je peux développer tous types de site : E-commerce, site vitrine, blog..."
-    },
-    { 
-      id: 2,
-      title: "Termes & Conditions",
-      description: "Vous ne savez pas comment bien utiliser les réseaux sociaux ? Je peux gérer vos comptes afin d’accroître votre notoriété."
-    },
-  ];
+  public politic: Politic;
+  public documentPath: String;
 
-  constructor(private modalService: NgbModal) { }
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-  ngOnInit() {
+  constructor(private dataService: DataService, private modalService: NgbModal) {
+    this.dataService.PAGE = '/politic';
   }
 
-  
+  ngOnInit() {
+    this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
+      this.politic = data['politic'];
+      this.documentPath = data['documentPath'];
+    })
+  }
 
-  openVerticallyCentered(content, id: number) {
-    this.result = this.modals.find(x => x.id === id);
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
+  openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true, size: 'md' });
   }
 

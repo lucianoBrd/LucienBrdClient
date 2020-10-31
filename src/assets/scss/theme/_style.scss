@@ -59,9 +59,8 @@
  1. general css start
 *************************/
 .cookie-law-wrapper .copy {
-  background-color: $dark;
+  background-image: linear-gradient($dark,$light);
   font-family: 'Poppins', sans-serif;
-  color: $secondary;
 }
 ::selection {
   background-color: $primary;

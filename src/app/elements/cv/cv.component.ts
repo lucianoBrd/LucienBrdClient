@@ -29,7 +29,6 @@ export class CvComponent implements OnInit, OnDestroy {
     this.metaService.setTitle('Cv');
     this.metaService.setDescription('Mon parcours et les compétences que j\'ai pu acquérir sont détaillées sur mon CV.');
 
-
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
       this.cv = data['cv'];
       this.documentPath = data['documentPath'];
