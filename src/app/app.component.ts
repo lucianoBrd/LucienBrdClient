@@ -17,7 +17,7 @@ import { Subject } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   public url: any;
   title = 'lucienBrdClient';
-  public layoutType: string = 'dark';
+  public layoutType: string = 'light';
   public cookie: string = 'En poursuivant votre navigation sur le site, vous acceptez notre utilisation des cookies.';
 
   public politic: Politic;

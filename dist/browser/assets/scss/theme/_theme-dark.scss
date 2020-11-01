@@ -11,8 +11,11 @@ $border-color:rgba(255, 255, 255, 0.08);
 // $border-color:rgba(255,255,255,0.2);
 $dark-color: #1c2440;
 
-
-
+.dark {
+  .modal-content {
+    background-color: $dark-color !important;
+  }
+} 
 body{
   &.dark{
     background-color:$light-color;
