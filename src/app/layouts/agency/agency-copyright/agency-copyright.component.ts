@@ -19,11 +19,14 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
+  public mdLoad: Boolean;
+
   constructor(private dataService: DataService, private modalService: NgbModal) {
     this.dataService.PAGE = '/politic';
   }
 
   ngOnInit() {
+    this.mdLoad = true;
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
       this.politic = data['politic'];
       this.documentPath = data['documentPath'];
@@ -35,8 +38,12 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
+  onReady() {
+    this.mdLoad = false;
+  }
+
   openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true, size: 'md' });
+    this.modalService.open(content, { centered: true, size: 'lg' });
   }
 
 }

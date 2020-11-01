@@ -54,6 +54,7 @@
     "ng2-animate-on-scroll": "^1.2.0",
     "ng2-scroll-to-el": "^1.2.1",
     "ng5-slider": "^1.2.4",
+    "ngx-markdown": "^10.1.1",
     "ngx-masonry": "^1.1.4",
     "ngx-masonry-gallery": "^3.0.0",
     "ngx-owl-carousel-o": "^2.1.1",

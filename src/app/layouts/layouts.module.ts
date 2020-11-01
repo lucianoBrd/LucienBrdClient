@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,6 +30,8 @@ import { AgencyVideoComponent } from './agency/agency-video/agency-video.compone
 // Agency Layout
 import { AgencyComponent } from './agency/agency.component';
 import { LayoutsRoutingModule } from './layouts-routing.module';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
@@ -44,6 +46,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
     SwiperModule,
     CarouselModule,
     NgbModule,
+    HttpClientModule,
     GalleryModule.forRoot(),
     SharedModule,
     CountToModule,
@@ -54,7 +57,11 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
     ReactiveFormsModule,
     NgxPayPalModule,
     Ng5SliderModule,
-    NgxMasonryModule
+    NgxMasonryModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE
+    }),
   ],
 
   exports: [

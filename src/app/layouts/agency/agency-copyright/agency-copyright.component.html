@@ -21,7 +21,12 @@
                     </div>
                     <div *ngIf="politic" class="modal-body text-center">
                         <h3 class="m-b-20">{{politic.title}}</h3>
-                        <p>{{politic.document}}</p>
+                        <div *ngIf="mdLoad">
+                            <app-loader-bis></app-loader-bis>
+                        </div>
+                        <div class="md-view">
+                            <markdown [src]="documentPath + politic.document" (ready)="onReady()"></markdown>
+                        </div>
                         <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
                             Fermer
                         </a>
