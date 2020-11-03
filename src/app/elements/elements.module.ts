@@ -22,9 +22,10 @@ import { HttpClient } from '@angular/common/http';
 import { SecurityContext } from '@angular/core';
 import { BlogComponent } from './blog/blog.component';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { SidebarComponent } from './blog/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, SidebarComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,

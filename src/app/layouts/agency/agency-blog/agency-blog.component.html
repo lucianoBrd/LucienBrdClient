@@ -34,7 +34,7 @@
                                                         <h6 class="m-r-25 font-blog">{{blog.date | date}}</h6>
                                                         <i class="fa fa-tags" aria-hidden="true"></i>
                                                         <h6 class="m-r-15 font-blog" *ngFor="let tag of blog.tags">
-                                                            <a href="#">{{tag.title}}</a>
+                                                            <a [routerLink]="['/blog/tag', tag.title]">{{tag.title}}</a>
                                                         </h6>
                                                     </div>
                                                 </div>

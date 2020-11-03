@@ -27,6 +27,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'blog/tag/:tag',
+        component: BlogComponent,
+         data: {
+          
+        }
+      },
+      {
         path: 'contact',
         component: ContactComponent,
          data: {

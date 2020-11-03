@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgxMasonryOptions } from 'ngx-masonry';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,6 +15,9 @@ import { MetaService } from 'src/app/shared/service/meta.service';
 })
 export class BlogComponent implements OnInit, OnDestroy {
 
+  private sub: any;
+
+  public tag: String;
   public blogs: Blog[];
   public imagePath: String;
 
@@ -24,7 +28,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     originTop: true
   };
 
-  constructor(private dataService: DataService, private metaService: MetaService) {
+  constructor(private dataService: DataService, private metaService: MetaService, private route: ActivatedRoute) {
     this.dataService.PAGE = '/blog';
   }
 
@@ -32,16 +36,29 @@ export class BlogComponent implements OnInit, OnDestroy {
     /* Set title + meta */
     this.metaService.setTitle('Blog');
     this.metaService.setDescription('Retrouvez tous les articles.');
+    this.sub = this.route.params.subscribe(params => {
+      this.blogs = null;
+      
+      /* Get tag */
+      this.tag = params['tag'];
+      if (this.tag) {
+        this.dataService.PAGE = '/blog/tag/' + this.tag;
+      } else {
+        this.dataService.PAGE = '/blog';
+      }
 
-    this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.blogs = data['blogs'] as Blog[];
-      this.imagePath = data['imagePath'];
-    })
+      this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
+        this.blogs = data['blogs'] as Blog[];
+        this.imagePath = data['imagePath'];
+      })
+    });
+
   }
 
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+    this.sub.unsubscribe();
   }
 
 }
