@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.metaService.setDescription('Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.socials = data['socials'];
+      this.socials = data['socials'] as Social[];
     })
   }
 

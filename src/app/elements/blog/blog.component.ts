@@ -1,37 +1,41 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgxMasonryOptions } from 'ngx-masonry';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Cv } from 'src/app/shared/models/cv.interface';
+import { Blog } from 'src/app/shared/models/blog.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 
 @Component({
-  selector: 'app-cv',
-  templateUrl: './cv.component.html',
-  styleUrls: ['./cv.component.scss'],
+  selector: 'app-blog',
+  templateUrl: './blog.component.html',
+  styleUrls: ['./blog.component.scss'],
   providers: [DataService]
 })
-export class CvComponent implements OnInit, OnDestroy {
-  public mobile: boolean = false;
-  public cv: Cv;
-  public documentPath: String;
+export class BlogComponent implements OnInit, OnDestroy {
+
+  public blogs: Blog[];
+  public imagePath: String;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
+  public myOptions: NgxMasonryOptions = {
+    transitionDuration: '0.8s',
+    originTop: true
+  };
+
   constructor(private dataService: DataService, private metaService: MetaService) {
-    this.dataService.PAGE = '/cv';
+    this.dataService.PAGE = '/blog';
   }
 
   ngOnInit() {
-    this.mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     /* Set title + meta */
-    this.metaService.setTitle('Cv');
-    this.metaService.setDescription('Mon parcours et les compétences que j\'ai pu acquérir sont détaillées sur mon CV.');
+    this.metaService.setTitle('Blog');
+    this.metaService.setDescription('Retrouvez tous les articles.');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.cv = data['cv'] as Cv;
-      this.documentPath = data['documentPath'];
+      this.blogs = data['blogs'] as Blog[];
+      this.imagePath = data['imagePath'];
     })
   }
 

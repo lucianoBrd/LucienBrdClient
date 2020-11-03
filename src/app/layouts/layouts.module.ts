@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, SecurityContext } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountToModule } from 'angular-count-to';
@@ -12,7 +11,6 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { NgxPayPalModule } from 'ngx-paypal';
 import { SwiperConfigInterface, SwiperModule, SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SharedModule } from '../shared/shared.module';
 import { AgencyBlogComponent } from './agency/agency-blog/agency-blog.component';
@@ -32,13 +30,14 @@ import { AgencyComponent } from './agency/agency.component';
 import { LayoutsRoutingModule } from './layouts-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AgencyTagComponent } from './agency/agency-tag/agency-tag.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
 
 @NgModule({
   declarations: [
-    AgencyComponent, AgencyNavComponent, AgencyHeaderComponent, AgencyContentComponent, AgencyServicesComponent, AgencyVideoComponent, AgencyCounterComponent, AgencyPricingComponent, AgencyProjectsComponent, AgencyTestimonialComponent, AgencyBlogComponent, AgencyFooterComponent, AgencyCopyrightComponent],
+    AgencyComponent, AgencyNavComponent, AgencyHeaderComponent, AgencyContentComponent, AgencyServicesComponent, AgencyVideoComponent, AgencyCounterComponent, AgencyPricingComponent, AgencyProjectsComponent, AgencyTestimonialComponent, AgencyBlogComponent, AgencyFooterComponent, AgencyTagComponent, AgencyCopyrightComponent],
 
   imports: [
     CommonModule,
@@ -53,9 +52,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
     AngularTiltModule,
     ScrollToModule.forRoot(),
     MasonryGalleryModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxPayPalModule,
     Ng5SliderModule,
     NgxMasonryModule,
     MarkdownModule.forRoot({

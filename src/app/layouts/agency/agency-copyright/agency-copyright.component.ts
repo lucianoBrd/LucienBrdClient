@@ -28,7 +28,7 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.mdLoad = true;
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.politic = data['politic'];
+      this.politic = data['politic'] as Politic;
       this.documentPath = data['documentPath'];
     })
   }

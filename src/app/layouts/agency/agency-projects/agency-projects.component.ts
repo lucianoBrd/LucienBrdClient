@@ -23,7 +23,7 @@ export class AgencyProjectsComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.projects = data['projects'];
+      this.projects = data['projects'] as Project[];
       this.imagePath = data['imagePath'];
     })
   }

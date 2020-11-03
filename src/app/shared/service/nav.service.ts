@@ -25,11 +25,12 @@ export class NavService {
 
   MENUITEMS: Menu[] = [
      { path: '/', title: 'Accueil',  type: 'link' },
-     { path: '/page/projets', title: 'Projets',  type: 'link' },
-     { path: '/page/contact', title: 'Contact',  type: 'link' },
-     { path: '/page/formation', title: 'Formations',  type: 'link' },
-     { path: '/page/cv', title: 'CV',  type: 'link' },
-     { path: '/page/a-propos', title: 'à propos',  type: 'link' },
+     { path: '/projets', title: 'Projets',  type: 'link' },
+     { path: '/blog', title: 'Blog',  type: 'link' },
+     { path: '/contact', title: 'Contact',  type: 'link' },
+     { path: '/formation', title: 'Formations',  type: 'link' },
+     { path: '/cv', title: 'CV',  type: 'link' },
+     { path: '/a-propos', title: 'à propos',  type: 'link' },
    ]
   
   	// Array

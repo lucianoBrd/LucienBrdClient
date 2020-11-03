@@ -1,0 +1,52 @@
+<div class="agency-page" [ngStyle]="{'background-image': 'url(assets/images/agency/slider/slider.png)'}">
+    <div class="container agency-title">
+        <div class="row">
+            <div class="col-12">
+                <div class="title title2 title-inner">
+                    <div class="main-title">
+                        <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
+                            <span>Blog</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- section start -->
+<div class="m-b-30" *ngIf="!blogs">
+    <app-loader-bis></app-loader-bis>
+</div>
+<ngx-masonry [options]="myOptions" [useImagesLoaded]="true" class="masonry-grid m-layout m-t-30" *ngIf="blogs">
+    <div ngxMasonryItem class="m-width m-2-col" (load)="updateMasonryLayout = !updateMasonryLayout" *ngFor="let blog of blogs">
+        <div class="blog-agency">
+            <div class="blog-contain">
+                <img [src]="imagePath + blog.image" alt="{{blog.title}}" class="img-fluid">
+                <div class="img-container">
+                    <div class="blog-info bottom-0">
+                        <div class="d-flex m-b-20">
+                            <div class="d-flex center-text">
+                                <i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>
+                                <h6 class="m-r-25 font-blog">{{blog.date | date}}</h6>
+                            </div>
+                            <div class="d-flex center-text">
+                                <i class="fa fa-tags m-r-10" aria-hidden="true"></i>
+                                <h6 class="m-r-15 font-blog" *ngFor="let tag of blog.tags">
+                                    <a href="#">{{tag.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                        <h5 class="blog-head font-600">{{blog.title}}</h5>
+                        <p class="para2">{{blog.content}}
+                        </p>
+                        <div class="btn-bottom  m-t-20">
+                            <a href="{{blog.slug}}" class="text-uppercase">Voir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngx-masonry>
+<!-- section end-->

@@ -28,7 +28,7 @@ export class FormationComponent implements OnInit, OnDestroy {
     this.metaService.setDescription('Les principales formations que j\'ai suivies durant ma vie sont résumée.');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.formations = data['educations'];
+      this.formations = data['educations'] as Formation[];
       this.imagePath = data['imagePath'];
     })
   }

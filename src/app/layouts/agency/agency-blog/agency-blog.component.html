@@ -5,24 +5,25 @@
             <div class="col-md-6 offset-md-3">
                 <div class="title">
                     <div class="main-title">
-                        <h2 class="text-capitalize text-center">derniers blogs</h2>
+                        <h2 class="text-capitalize text-center">derniers articles</h2>
                     </div>
                     <div class="sub-title">
                         <p class="text-center">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry.
-                            Lorem Ipsum has been
+                            Retrouvez tous les posts sur le <a [routerLink]="['/blog']">Blog</a>.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" *ngIf="!blogs">
+                <app-loader-bis></app-loader-bis>
+            </div>
+            <div class="col-12" *ngIf="blogs">
                 <owl-carousel-o [options]="blogCarouselOptions">
                     <ng-container *ngFor="let blog of blogs">
                         <ng-template carouselSlide class="item">
                             <div class="blog-agency">
                                 <div class="blog-contain">
-                                    <img [src]="blog.img" alt="" class="img-fluid">
+                                    <img [src]="imagePath + blog.image" alt="{{blog.title}}" class="img-fluid">
                                     <div class="img-container center-content">
                                         <div class="center-content">
                                             <div class="blog-info">
@@ -30,14 +31,20 @@
                                                     <div class="center-text">
                                                         <i class="fa fa-clock-o"
                                                             aria-hidden="true"></i>
-                                                        <h6 class="m-r-25 font-blog">{{blog.date}}</h6>
-                                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                        <h6 class="font-blog">{{blog.type}}</h6>
+                                                        <h6 class="m-r-25 font-blog">{{blog.date | date}}</h6>
+                                                        <i class="fa fa-tags" aria-hidden="true"></i>
+                                                        <h6 class="m-r-15 font-blog" *ngFor="let tag of blog.tags">
+                                                            <a href="#">{{tag.title}}</a>
+                                                        </h6>
                                                     </div>
                                                 </div>
                                                 <h5 class="blog-head">{{blog.title}}</h5>
-                                                <p class="para2">{{blog.description}}</p>
-                                                <div class="m-t-20"><a href="javascript:void(0)" class="text-uppercase">{{blog.btn}}</a></div>
+                                                <p class="para2">{{blog.content}}</p>
+                                                <div class="m-t-20">
+                                                    <a href="{{blog.slug}}" class="text-uppercase">
+                                                        Voir plus
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

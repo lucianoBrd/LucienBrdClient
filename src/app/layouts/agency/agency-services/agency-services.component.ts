@@ -35,7 +35,7 @@ export class AgencyServicesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.services = data['services'];
+      this.services = data['services'] as Service[];
       this.imagePath = data['imagePath'];
       
       if (this.services && this.services.length == 6) {

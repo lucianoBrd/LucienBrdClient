@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule, SecurityContext } from '@angular/core';
+import { LOCALE_ID, NgModule, SecurityContext } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +14,9 @@ import { AppComponent } from './app.component';
 import { ElementsModule } from './elements/elements.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { SharedModule } from './shared/shared.module';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SharedModule } from './shared/shared.module';
     RouterModule.forRoot(routes, { useHash: false, anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
 
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: "fr-FR" }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

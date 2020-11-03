@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: AgencyComponent
   },
   {
-    path: 'page',
+    path: '',
     component: ElementsComponent,
     loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule),
     data: {
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/page/404',
+    redirectTo: '/404',
     pathMatch: 'full',
   },
 ];

@@ -646,8 +646,6 @@ MIT
 ngx-owl-carousel-o
 MIT
 
-ngx-paypal
-
 ngx-swiper-wrapper
 MIT
 The MIT License

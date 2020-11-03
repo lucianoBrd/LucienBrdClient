@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Blog } from 'src/app/shared/models/blog.interface';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-agency-blog',
   templateUrl: './agency-blog.component.html',
-  styleUrls: ['./agency-blog.component.scss']
+  styleUrls: ['./agency-blog.component.scss'],
+  providers: [DataService]
 })
-export class AgencyBlogComponent implements OnInit {
+export class AgencyBlogComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  public blogs: Blog[];
+  public imagePath: String;
 
-  ngOnInit() {
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
+  constructor(private dataService: DataService) {
+    this.dataService.PAGE = '/blog/latest';
   }
 
-  blogs = [
-    {
-      img: "assets/images/agency/blog/blog-list-1.jpg",
-      date: "June 19, 2018",
-      type: "Phonics",
-      title: "Twice profit than before you",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,it to make a type specimen book...............",
-      btn: "read more"
-    },
-    {
-      img: "assets/images/agency/blog/blog-list-2.jpg",
-      date: "June 19, 2018",
-      type: "Phonics",
-      title: "Twice profit than before you",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,it to make a type specimen book...............",
-      btn: "read more"
-    },
-    {
-      img: "assets/images/agency/blog/blog-list-3.jpg",
-      date: "June 19, 2018",
-      type: "Phonics",
-      title: "Twice profit than before you",
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,it to make a type specimen book...............",
-      btn: "read more"
-    },
-  ]
+  ngOnInit() {
+    this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
+      this.blogs = data['blogs'] as Blog[];
+
+      /* Case there are not 3 items */
+      length = this.blogs.length;
+      if(this.blogs != null && length < 3 && length > 0) {
+        for (let i = 0; i < (3 - length); i++) {
+          this.blogs.push(this.blogs[0]);
+        }
+      }
+      this.imagePath = data['imagePath'];
+    })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
   blogCarouselOptions = {
     items: 3,

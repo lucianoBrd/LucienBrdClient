@@ -17,9 +17,14 @@ import { ProjectsComponent } from './projects/projects.component';
 import { CvComponent } from './cv/cv.component';
 import { FormsModule } from '@angular/forms';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClient } from '@angular/common/http';
+import { SecurityContext } from '@angular/core';
+import { BlogComponent } from './blog/blog.component';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,
@@ -31,6 +36,11 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
     LayoutsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    NgxMasonryModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE
+    }),
   ]
 })
 export class ElementsModule { }

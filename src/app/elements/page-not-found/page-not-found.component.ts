@@ -13,7 +13,7 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('404');
-    this.metaService.setDescription('a page que vous essayez d\'atteindre n\'est pasdisponible actuellement. Cela peut être dû au fait que la page n\'existe pas ou a été déplacée.');
+    this.metaService.setDescription('La page que vous essayez d\'atteindre n\'est pasdisponible actuellement. Cela peut être dû au fait que la page n\'existe pas ou a été déplacée.');
   }
 
 }

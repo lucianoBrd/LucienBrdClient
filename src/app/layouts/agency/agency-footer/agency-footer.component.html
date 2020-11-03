@@ -33,10 +33,13 @@
                                 <a [routerLink]="['/']">Accueil</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/page/projets']">Projets</a>
+                                <a [routerLink]="['/projets']">Projets</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/page/contact']">Contact</a>
+                                <a [routerLink]="['/blog']">Blog</a>
+                            </li>
+                            <li class="">
+                                <a [routerLink]="['/contact']">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -51,13 +54,13 @@
                     <div>
                         <ul class="footer-lists op-text">
                             <li class="">
-                                <a [routerLink]="['/page/formation']">Formations</a>
+                                <a [routerLink]="['/formation']">Formations</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/page/cv']">CV</a>
+                                <a [routerLink]="['/cv']">CV</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/page/a-propos']">à propos</a>
+                                <a [routerLink]="['/a-propos']">à propos</a>
                             </li>
                         </ul>
                     </div>
@@ -79,34 +82,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 set-last">
-                <div class="footer-title mobile-title">
-                    <h3 class="text-white">Post Tags</h3>
-                </div>
-                <div class="footer-contant">
-                    <h5 class="footer-headings">Post Tags</h5>
-                    <div class="link-btns">
-                        <ul>
-                            <li class="buttons">
-                                <a href="#">app</a>
-                            </li>
-                            <li class="buttons">
-                                <a href="#">business</a>
-                            </li>
-                            <li class="buttons">
-                                <a href="#">corporation</a>
-                            </li>
-                            <li class="buttons">
-                                <a href="#">creative</a>
-                            </li>
-                            <li class="buttons">
-                                <a href="#">design</a>
-                            </li>
-                            <li class="buttons">
-                                <a href="#">fashion</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <app-agency-tag></app-agency-tag>
             </div>
         </div>
         <!--footer end-->

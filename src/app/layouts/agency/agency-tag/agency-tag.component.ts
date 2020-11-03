@@ -1,28 +1,28 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Social } from 'src/app/shared/models/social.interface';
+import { Tag } from 'src/app/shared/models/tag.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
-  selector: 'app-agency-footer',
-  templateUrl: './agency-footer.component.html',
-  styleUrls: ['./agency-footer.component.scss'],
+  selector: 'app-agency-tag',
+  templateUrl: './agency-tag.component.html',
+  styleUrls: ['./agency-tag.component.scss'],
   providers: [DataService]
 })
-export class AgencyFooterComponent implements OnInit, OnDestroy {
+export class AgencyTagComponent implements OnInit, OnDestroy {
 
-  public socials: Social[] = [];
+  public tags: Tag[];
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService) {
-    this.dataService.PAGE = '/social';
+    this.dataService.PAGE = '/tag';
   }
 
   ngOnInit() {
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.socials = data['socials'] as Social[];
+      this.tags = data['tags'] as Tag[];
     })
   }
 
