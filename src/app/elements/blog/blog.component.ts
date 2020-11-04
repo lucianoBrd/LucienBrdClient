@@ -44,6 +44,11 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.tag = params['tag'];
       if (this.tag) {
         this.dataService.PAGE = '/blog/tag/' + this.tag;
+
+        /* Set title + meta */
+        this.metaService.setTitle('Blog ' + this.tag);
+        this.metaService.setKeywords('blog, tous les articles, ' + this.tag);
+        this.metaService.setDescription('Retrouvez tous les articles en lien avec : ' + this.tag + '.');
       } else {
         this.dataService.PAGE = '/blog';
       }
