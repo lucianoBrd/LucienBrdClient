@@ -21,4 +21,13 @@ export class MetaService {
     );
   }
 
+  public setKeywords(newKw: string) {
+    this.metaService.updateTag(
+      {
+        name: 'keywords',
+        content: 'lucien, burdet, createur de site internet, solutions web, lucien burdet,' + newKw
+      }
+    );
+  }
+
 }

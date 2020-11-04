@@ -24,6 +24,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('A propos');
+    this.metaService.setKeywords('a propos');
     this.metaService.setDescription('Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {

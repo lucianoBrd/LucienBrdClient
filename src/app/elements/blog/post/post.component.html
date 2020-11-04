@@ -1,0 +1,81 @@
+<div class="agency-page" [ngStyle]="{'background-image': 'url(assets/images/agency/slider/slider.png)'}">
+    <div class="container agency-title">
+        <div class="row">
+            <div class="col-12" *ngIf="!blog">
+                <app-loader-bis></app-loader-bis>
+            </div>
+            <div class="col-12" *ngIf="blog">
+                <div class="title title2 title-inner">
+                    <div class="main-title">
+                        <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
+                            <span>Article</span>
+                        </h2>
+                        <h4>{{blog.title| slice:0:30}}...</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- section start -->
+<section class="agency blog-sec blog-sidebar single_blog_item">
+    <div class="container">
+        <div class="row" *ngIf="!blog">
+            <div class="col-12">
+                <app-loader-bis></app-loader-bis>
+            </div>
+        </div>
+        <div class="row" *ngIf="blog">
+            <div class="col-12">
+                <div class="blog-block">
+                    <div class="blog-box">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid blur-up lazyload" [src]="imagePath + blog.image" alt="{{blog.title}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-text m-t-20">
+
+                    <h6>
+                        {{blog.date | date}}
+                        <p class="pull-right">
+                            <i class="fa fa-tags m-r-10" aria-hidden="true"></i>
+                            <a class="m-r-15" *ngFor="let tag of blog.tags" [routerLink]="['/blog/tag', tag.title]">{{tag.title}}</a>
+                        </p>
+                    </h6>
+
+                    <h3 class="blog-head">{{blog.title}}</h3>
+
+                    <div class="blog-divider"></div>
+
+                    <div class="blog-description">
+
+                        <div *ngIf="mdLoad">
+                            <app-loader-bis></app-loader-bis>
+                        </div>
+                        <div class="md-view">
+                            <markdown [src]="documentPath + blog.document" (ready)="onReady()"></markdown>
+                        </div>
+
+                        <h5>
+                            En espérant que l'article vous ait plu
+                        </h5>
+                        <h5 class="pull-right">
+                            <a class="m-r-15" target="_blank" href="https://www.linkedin.com/shareArticle?url={{url}}&title={{blog.title}}&summary={{blog.content}}">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a class="m-r-15" target="_blank" href="https://www.facebook.com/sharer.php?u={{url}}&t={{blog.title}}">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="m-r-15" target="_blank" href="https://twitter.com/share?url={{url}}&text={{blog.title}}">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section start -->

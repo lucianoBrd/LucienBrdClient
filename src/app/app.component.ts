@@ -38,6 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     /* Set title + meta */
     this.metaService.setTitle('Accueil');
+    this.metaService.setKeywords('Lucien Burdet créateur de site internet pour les professionnels et particuliers');
     this.metaService.setDescription('Lucien Burdet créateur de site internet pour les professionnels et particuliers.');
 
     this.router.events.subscribe((event) => {

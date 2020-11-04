@@ -15,6 +15,13 @@ $dark-color: #1c2440;
   .modal-content {
     background-color: $dark-color !important;
   }
+  .loader-wrapper-bis {
+    .loader {
+      > div {
+        background: $white-1;
+      }
+    }
+  }
 } 
 body{
   &.dark{

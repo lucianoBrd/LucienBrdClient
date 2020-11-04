@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BlogComponent } from './blog/blog.component';
+import { PostComponent } from './blog/post/post.component';
 import { ContactComponent } from './contact/contact.component';
 import { CvComponent } from './cv/cv.component';
 import { FormationComponent } from './formation/formation.component';
@@ -29,6 +30,13 @@ const routes: Routes = [
       {
         path: 'blog/tag/:tag',
         component: BlogComponent,
+         data: {
+          
+        }
+      },
+      {
+        path: 'blog/:slug',
+        component: PostComponent,
          data: {
           
         }

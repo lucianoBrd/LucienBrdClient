@@ -41,7 +41,7 @@
                                                 <h5 class="blog-head">{{blog.title}}</h5>
                                                 <p class="para2">{{blog.content}}</p>
                                                 <div class="m-t-20">
-                                                    <a href="{{blog.slug}}" class="text-uppercase">
+                                                    <a [routerLink]="['/blog', blog.slug]" class="text-uppercase">
                                                         Voir plus
                                                     </a>
                                                 </div>

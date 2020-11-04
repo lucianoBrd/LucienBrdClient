@@ -28,6 +28,7 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('Contact');
+    this.metaService.setKeywords('contact, mail, coordonnées');
     this.metaService.setDescription('Je peux vous établir gratuitement un devis sur simple demande. La satisfaction du client étant ma priorité, je mettrai tout en œuvre pour répondre à vos attentes et exigences.');
 
     this.error = false;

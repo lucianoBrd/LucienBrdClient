@@ -13,6 +13,7 @@ export class AgencyComponent implements OnInit {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('Accueil');
+    this.metaService.setKeywords('Lucien Burdet créateur de site internet pour les professionnels et particuliers');
     this.metaService.setDescription('Lucien Burdet créateur de site internet pour les professionnels et particuliers.');
   }
 

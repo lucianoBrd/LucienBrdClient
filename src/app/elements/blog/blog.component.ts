@@ -35,10 +35,11 @@ export class BlogComponent implements OnInit, OnDestroy {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('Blog');
+    this.metaService.setKeywords('blog, tous les articles');
     this.metaService.setDescription('Retrouvez tous les articles.');
     this.sub = this.route.params.subscribe(params => {
       this.blogs = null;
-      
+
       /* Get tag */
       this.tag = params['tag'];
       if (this.tag) {

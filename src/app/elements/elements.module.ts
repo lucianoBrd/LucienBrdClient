@@ -23,9 +23,10 @@ import { SecurityContext } from '@angular/core';
 import { BlogComponent } from './blog/blog.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { SidebarComponent } from './blog/sidebar/sidebar.component';
+import { PostComponent } from './blog/post/post.component';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, SidebarComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, SidebarComponent, PostComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,

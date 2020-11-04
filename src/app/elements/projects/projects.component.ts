@@ -26,6 +26,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('Projets');
+    this.metaService.setKeywords('projets');
     this.metaService.setDescription('Les projets m\'ont beaucoup apporté : savoir, analyse, autonomie...');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {

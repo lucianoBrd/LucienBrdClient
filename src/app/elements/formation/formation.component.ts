@@ -25,6 +25,7 @@ export class FormationComponent implements OnInit, OnDestroy {
   ngOnInit() {
     /* Set title + meta */
     this.metaService.setTitle('Formations');
+    this.metaService.setKeywords('formations');
     this.metaService.setDescription('Les principales formations que j\'ai suivies durant ma vie sont résumée.');
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
