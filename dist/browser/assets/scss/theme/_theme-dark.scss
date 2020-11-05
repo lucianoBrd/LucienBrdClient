@@ -576,8 +576,17 @@ h6 {
 .single_blog_item{
   .blog-text{
     .blog-description{
-      p{
+      p, li {
         color: #e7eaec;
+      }
+      pre {
+        background-color: $white-4;
+      }
+      pre code {
+        color: $primary;
+      }
+      code, a {
+        color: $white-5;
       }
       h5{
         &.pull-right{
