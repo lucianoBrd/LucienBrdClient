@@ -16,6 +16,7 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { SharedModule } from './shared/shared.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { LanguageService } from './shared/service/language.service';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -44,7 +45,8 @@ registerLocaleData(localeFr);
 
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: "fr-FR" }
+    LanguageService,
+    { provide: LOCALE_ID, useValue: LanguageService.getLanguage() }
   ],
   bootstrap: [AppComponent]
 })
