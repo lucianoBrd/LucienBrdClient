@@ -9,7 +9,7 @@ export class MetaService {
   constructor(private titleService: Title, private metaService: Meta) { }
 
   public setTitle(newTitle: string) {
-    this.titleService.setTitle('Lucien Burdet | ' + newTitle);
+    this.titleService.setTitle(newTitle + ' | Lucien Burdet');
   }
 
   public setDescription(newDesc: string) {
