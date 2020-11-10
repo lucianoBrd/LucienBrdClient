@@ -20,14 +20,15 @@
 <section class="agency blog blog-sec blog-sidebar">
     <div class="container">
         <div class="row">
+            <div class="col-lg-3">
+                <app-sidebar></app-sidebar>
+            </div>
             <div class="col-lg-9 order-lg-2">
                 <div class="m-b-30" *ngIf="!blogs">
                     <app-loader-bis></app-loader-bis>
                 </div>
-                <ngx-masonry [options]="myOptions" [useImagesLoaded]="true" class="masonry-grid m-layout m-t-30"
-                    *ngIf="blogs">
-                    <div ngxMasonryItem class="m-width m-2-col" (load)="updateMasonryLayout = !updateMasonryLayout"
-                        *ngFor="let blog of blogs">
+                <ngx-masonry [options]="myOptions" [useImagesLoaded]="true" class="masonry-grid m-layout m-t-30" *ngIf="blogs">
+                    <div ngxMasonryItem class="m-width m-2-col" (load)="updateMasonryLayout = !updateMasonryLayout" *ngFor="let blog of blogs">
                         <div class="blog-agency">
                             <div class="blog-contain">
                                 <img [src]="imagePath + blog.image" alt="{{blog.title}}" class="img-fluid">
@@ -57,9 +58,6 @@
                         </div>
                     </div>
                 </ngx-masonry>
-            </div>
-            <div class="col-lg-3">
-                <app-sidebar></app-sidebar>
             </div>
         </div>
     </div>

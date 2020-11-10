@@ -14,6 +14,12 @@ $dark-color: #1c2440;
 .dark {
   .modal-content {
     background-color: $dark-color !important;
+    li {
+      color:$white-5;
+    }
+    ul li::before {
+      color: $white-5;
+    }
   }
   .loader-wrapper-bis {
     .loader {
@@ -661,16 +667,18 @@ label {
         }
         .blog-info{
           .font-blog{
-            color:$white-5 ;
+            color:$white-5;
           }
         }
         .blog-head{
-          color:$white-5 ;
+          color:$white-5;
         }
-
       }
     }
   }
+}
+.m-layout .m-width .blog-agency .blog-contain .img-container .blog-info .blog-head {
+  color:$white-5;
 }
 .testimonial{
   .testimonial-container{
