@@ -9582,9 +9582,17 @@ error css end
     .blog-description {
       border-bottom: 1px solid rgba(51, 51, 51, 0.25);
       padding-bottom: 20px;
+      blockquote {
+        p {
+          font-weight: 500;
+        }
+        margin-left: 2px;
+        border-left: 2px solid rgba(51, 51, 51, 0.25);
+        padding-left: 8px;
+      }
       img {
         width: 100%;
-        max-width: 500px;
+        max-width: 1000px;
         height: auto;
         margin-top: 15px;
         margin-bottom: 15px;

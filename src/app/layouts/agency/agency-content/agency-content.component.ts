@@ -1,6 +1,8 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { fadeInLeft } from 'ng-animate';
+import { Language } from 'src/app/shared/models/language.interface';
+import { TextService } from 'src/app/shared/service/text.service';
 @Component({
   selector: 'app-agency-content',
   templateUrl: './agency-content.component.html',
@@ -12,10 +14,12 @@ import { fadeInLeft } from 'ng-animate';
     }))])]
 })
 export class AgencyContentComponent implements OnInit {
+  public language: Language;
+  fadeInLeft: any;
 
-  fadeInLeft:any;
-  
-  constructor() { }
+  constructor(private textService: TextService) {
+    this.language = textService.getTextByLocal();
+  }
 
   ngOnInit() {
   }

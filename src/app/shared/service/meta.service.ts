@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Language } from '../models/language.interface';
+import { TextService } from './text.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MetaService {
+  public language: Language;
 
-  constructor(private titleService: Title, private metaService: Meta) { }
+  constructor(private titleService: Title, private metaService: Meta, private textService: TextService) {
+    this.language = textService.getTextByLocal();
+  }
 
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle + ' | Lucien Burdet');
@@ -25,7 +30,7 @@ export class MetaService {
     this.metaService.updateTag(
       {
         name: 'keywords',
-        content: 'lucien, burdet, createur de site internet, solutions web, lucien burdet,' + newKw
+        content: this.language.keywords + newKw
       }
     );
   }

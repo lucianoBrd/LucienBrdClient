@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
+import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-agency-blog',
@@ -14,11 +16,13 @@ export class AgencyBlogComponent implements OnInit, OnDestroy {
 
   public blogs: Blog[];
   public imagePath: String;
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/blog/latest';
+    this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {

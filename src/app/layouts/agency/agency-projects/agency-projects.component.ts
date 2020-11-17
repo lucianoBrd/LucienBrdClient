@@ -3,6 +3,8 @@ import { DataService } from 'src/app/shared/service/data.service';
 import { Project } from 'src/app/shared/models/project.interface';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Language } from 'src/app/shared/models/language.interface';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-agency-projects',
@@ -14,11 +16,13 @@ export class AgencyProjectsComponent implements OnInit, OnDestroy  {
 
   public projects: Project[];
   public imagePath: String;
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/project/random';
+    this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {

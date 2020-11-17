@@ -582,6 +582,9 @@ h6 {
 .single_blog_item{
   .blog-text{
     .blog-description{
+      blockquote {
+        border-left: 2px solid $white-5;
+      }
       p, li {
         color: #e7eaec;
       }

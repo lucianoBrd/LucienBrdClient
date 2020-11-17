@@ -5,20 +5,20 @@
             <div class="col-lg-3 col-md-4">
                 <div class="format-container">
                     <h6 class="borders-before text-uppercase font-600">
-                        <span class="">Mes projets</span>
+                        <span class="">{{language.projectsSubTitle}}</span>
                     </h6>
                     <div class="format-head-text">
                         <h2 class="">
-                            Les projets qui  
-                            <span class="block-span">me tiennent à coeurs</span>
+                            {{language.projectsTitle1}}
+                            <span class="block-span">{{language.projectsTitle2}}</span>
                         </h2>
                     </div>
                     <div class="format-sub-text">
                         <p class="about-para">
-                            Les projets m'ont beaucoup apporté : savoir, analyse, autonomie....
+                            {{language.projectsShortContent}}
                         </p>
                     </div>
-                    <a [routerLink]="['/projets']" class=" btn btn-default btn-gradient text-white">voir plus</a>
+                    <a [routerLink]="['/projets']" class=" btn btn-default btn-gradient text-white">{{language.viewMore}}</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-8" *ngIf="!projects">

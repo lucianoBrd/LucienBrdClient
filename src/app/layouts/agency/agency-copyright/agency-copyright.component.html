@@ -6,7 +6,7 @@
                 <div class="link-horizontal">
                     <ul>
                         <li>
-                            <a class="copyright-text" href="javascript:void(0)" (click)="openVerticallyCentered(content)">Politique de confidentialité</a>
+                            <a class="copyright-text" href="javascript:void(0)" (click)="openVerticallyCentered(content)">{{language.privacyPolicy}}</a>
                         </li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
                             <markdown [src]="documentPath + politic.document" (ready)="onReady()"></markdown>
                         </div>
                         <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
-                            Fermer
+                            {{language.close}}
                         </a>
                     </div>
                     <div *ngIf="!politic" class="modal-body text-center">

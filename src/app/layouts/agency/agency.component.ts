@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Language } from 'src/app/shared/models/language.interface';
 import { MetaService } from 'src/app/shared/service/meta.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-agency',
@@ -7,14 +9,17 @@ import { MetaService } from 'src/app/shared/service/meta.service';
   styleUrls: ['./agency.component.scss']
 })
 export class AgencyComponent implements OnInit {
-
-  constructor(private metaService: MetaService) {}
+  public language: Language;
+  
+  constructor(private metaService: MetaService, private textService: TextService) {
+    this.language = textService.getTextByLocal();
+  }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('Accueil');
-    this.metaService.setKeywords('Lucien Burdet créateur de site internet pour les professionnels et particuliers');
-    this.metaService.setDescription('Lucien Burdet créateur de site internet pour les professionnels et particuliers.');
+    this.metaService.setTitle(this.language.home);
+    this.metaService.setKeywords(this.language.homeDesc);
+    this.metaService.setDescription(this.language.homeDesc);
   }
 
 }

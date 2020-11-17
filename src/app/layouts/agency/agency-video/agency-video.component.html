@@ -20,7 +20,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             <iframe class="mfp-iframe" frameborder="0" allowfullscreen=""
-                                                src="//www.youtube.com/embed/y49onlXlCWE?autoplay=1"></iframe>
+                                                [src]="safeUrl"></iframe>
                                         </div>
                                     </ng-template>
                                 </div>
@@ -31,10 +31,10 @@
                                     </a>
                                     <div class="">
                                         <h3 class="video-heading text-white text-center">
-                                            Vidéo de présentation
+                                            {{language.videoTitle}}
                                         </h3>
-                                        <h6 class="video-text text-white  text-center">
-                                            Création. Développement. Inspiration.
+                                        <h6 class="video-text text-white text-center">
+                                            {{language.videoShortContent}}
                                         </h6>
                                     </div>
                                 </div>

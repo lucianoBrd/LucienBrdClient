@@ -1,6 +1,6 @@
 <!--agency content start-->
 <section class="agency agency-content about-bg">
-    <h3 class="text-as-shadow">A <br/> propos</h3>
+    <h3 class="text-as-shadow">{{language.aboutShadow1}} <br/> {{language.aboutShadow2}}</h3>
     <div class="container">
         <div class="row">
             <div class="col-xl-9 offset-xl-3 col-md-9 offset-md-3">
@@ -8,17 +8,16 @@
                     <div class="borders"></div>
                     <div class="agency-head">
                         <h3 class="agency-head-text">
-                            Je suis là pour
-                            <span class="block-span">mettre en place vos idées</span>
+                            {{language.aboutTitle1}}
+                            <span class="block-span">{{language.aboutTitle2}}</span>
                         </h3>
                     </div>
                 </div>
 
                 <p class="agency-para">
-                    Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.
-                    Les travaux que je peux effectuer sont des solutions pour le web : E-Commerce, site vitrine…
+                    {{language.aboutShortContent}}
                 </p>
-                <a [routerLink]="['/a-propos']" class=" btn btn-default btn-gradient text-white">voir plus</a>
+                <a [routerLink]="['/a-propos']" class=" btn btn-default btn-gradient text-white">{{language.viewMore}}</a>
             </div>
         </div>
     </div>

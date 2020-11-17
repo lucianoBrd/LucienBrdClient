@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Language } from 'src/app/shared/models/language.interface';
 import { Politic } from 'src/app/shared/models/politic.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-agency-copyright',
@@ -16,13 +18,15 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
 
   public politic: Politic;
   public documentPath: String;
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   public mdLoad: Boolean;
 
-  constructor(private dataService: DataService, private modalService: NgbModal) {
+  constructor(private dataService: DataService, private modalService: NgbModal, private textService: TextService) {
     this.dataService.PAGE = '/politic';
+    this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {

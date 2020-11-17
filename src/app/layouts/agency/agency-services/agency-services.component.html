@@ -6,19 +6,19 @@
                 <div class="center-text">
                     <div class="format-container">
                         <h6 class="borders-before text-uppercase">
-                            <span class="">Mes services</span>
+                            <span class="">{{language.servicesSubTitle}}</span>
                         </h6>
                         <div class="format-head-text">
                             <h2 class="about-font-header">
-                                Les services que je 
+                                {{language.servicesTitle1}}
                                 <span class="block-span">
-                                    propose
+                                    {{language.servicesTitle2}}
                                 </span>
                             </h2>
                         </div>
                         <div class="format-sub-text">
                             <p class="about-para">
-                                Je ne me contente pas de simplement développer votre projet : je vous propose une étude minutieuse et je peux vous apporter mon expertise pour couvrir tous vos besoins en termes de communication, publicité, référencement…
+                                {{language.servicesShortContent}}
                             </p>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             <h3 class="m-b-20">{{result.title}}</h3>
                             <p>{{result.description}}</p>
                             <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
-                                Fermer
+                                {{language.close}}
                             </a>
                         </div>
                     </div>

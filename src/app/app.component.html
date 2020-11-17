@@ -2,19 +2,19 @@
 <router-outlet></router-outlet>
 <div class="theme-pannel-main">
     <ul>
-        <li id="rtl_btn" *ngIf="customize.data.settings.layout_type == 'ltr'" (click)="customizeLayoutType('rtl')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">Dag</span></a></li>
-        <li id="ltr_btn" *ngIf="customize.data.settings.layout_type == 'rtl'" (click)="customizeLayoutType('ltr')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">Gad</span></a></li>
+        <li id="rtl_btn" *ngIf="customize.data.settings.layout_type == 'ltr'" (click)="customizeLayoutType('rtl')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">{{language.rtl}}</span></a></li>
+        <li id="ltr_btn" *ngIf="customize.data.settings.layout_type == 'rtl'" (click)="customizeLayoutType('ltr')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">{{language.ltr}}</span></a></li>
         <li class="sidebar-btn dark-light-btn" *ngIf="customize.data.settings.layout_version == 'dark'" (click)="customizeLayoutVersion('light')">
-            <a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">Clair</span></a>
+            <a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">{{language.light}}</span></a>
         </li>
         <li class="sidebar-btn dark-light-btn"  *ngIf="customize.data.settings.layout_version == 'light'" (click)="customizeLayoutVersion('dark')">
-            <a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">Sombre</span></a>
+            <a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">{{language.dark}}</span></a>
         </li>
     </ul>
 </div>
 <cookie-law>
-    {{cookie}}
-    <a href="javascript:void(0)" id="cookie-more" (click)="openVerticallyCentered(content)">Savoir plus</a>
+    {{language.cookie}}
+    <a href="javascript:void(0)" id="cookie-more" (click)="openVerticallyCentered(content)">{{language.learnMore}}</a>
 </cookie-law>
 
 <ng-template #content let-modal>
@@ -34,7 +34,7 @@
                 <markdown [src]="documentPath + politic.document" (ready)="onReady()"></markdown>
             </div>
             <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
-                Fermer
+                {{language.close}}
             </a>
         </div>
         <div *ngIf="!politic" class="modal-body text-center">

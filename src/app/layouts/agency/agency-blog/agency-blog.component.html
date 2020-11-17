@@ -5,11 +5,11 @@
             <div class="col-md-6 offset-md-3">
                 <div class="title">
                     <div class="main-title">
-                        <h2 class="text-capitalize text-center">derniers articles</h2>
+                        <h2 class="text-capitalize text-center">{{language.latestPost}}</h2>
                     </div>
                     <div class="sub-title">
                         <p class="text-center">
-                            Retrouvez tous les posts sur le <a [routerLink]="['/blog']">Blog</a>.
+                            {{language.allPost}} <a [routerLink]="['/blog']">{{language.blog}}</a>.
                         </p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                                                 <p class="para2">{{blog.content}}</p>
                                                 <div class="m-t-20">
                                                     <a [routerLink]="['/blog', blog.slug]" class="text-uppercase">
-                                                        Voir plus
+                                                        {{language.readMore}}
                                                     </a>
                                                 </div>
                                             </div>

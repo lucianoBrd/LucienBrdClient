@@ -5,10 +5,10 @@
             <div class="col-lg-3 col-md-3 col-sm-12 set-first">
                 <div class="logo-sec">
                     <div class="footer-title mobile-title">
-                        <h3 class="text-white">à propos</h3>
+                        <h3 class="text-white">{{language.about}}</h3>
                     </div>
                     <div class="footer-contant">
-                        <img src="assets/images/logo/logo.webp" alt="" class="img-fluid footer-logo img-logo">
+                        <img src="assets/images/logo/logo.webp" alt="logo" class="img-fluid footer-logo img-logo">
                         <div class="footer-para">
                             <h6 class="text-white para-address">Lucien Burdet</h6>
                             <h6 class="text-white para-address">N° SIRET 847 828 183 00016</h6>
@@ -23,23 +23,23 @@
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12">
                 <div class="footer-title mobile-title">
-                    <h3 class="text-white">pages</h3>
+                    <h3 class="text-white">{{language.pages}}</h3>
                 </div>
                 <div class="footer-contant">
-                    <h5 class="footer-headings">pages</h5>
+                    <h5 class="footer-headings">{{language.pages}}</h5>
                     <div>
                         <ul class="footer-lists op-text">
                             <li class="">
-                                <a [routerLink]="['/']">Accueil</a>
+                                <a [routerLink]="['/']">{{language.home}}</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/projets']">Projets</a>
+                                <a [routerLink]="['/projets']">{{language.projects}}</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/blog']">Blog</a>
+                                <a [routerLink]="['/blog']">{{language.blog}}</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/contact']">Contact</a>
+                                <a [routerLink]="['/contact']">{{language.contact}}</a>
                             </li>
                         </ul>
                     </div>
@@ -54,13 +54,13 @@
                     <div>
                         <ul class="footer-lists op-text">
                             <li class="">
-                                <a [routerLink]="['/formation']">Formations</a>
+                                <a [routerLink]="['/formation']">{{language.education}}</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/cv']">CV</a>
+                                <a [routerLink]="['/cv']">{{language.cv}}</a>
                             </li>
                             <li class="">
-                                <a [routerLink]="['/a-propos']">à propos</a>
+                                <a [routerLink]="['/a-propos']">{{language.about}}</a>
                             </li>
                         </ul>
                     </div>
@@ -68,14 +68,14 @@
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12">
                 <div class="footer-title mobile-title">
-                    <h3 class="text-white">Sitemap</h3>
+                    <h3 class="text-white">{{language.sitemap}}</h3>
                 </div>
                 <div class="footer-contant">
-                    <h5 class="footer-headings">Sitemap</h5>
+                    <h5 class="footer-headings">{{language.sitemap}}</h5>
                     <div>
                         <ul class="footer-lists op-text">
                             <li class="">
-                                <a href="/sitemap.xml">Sitemap</a>
+                                <a href="/sitemap.xml">{{language.sitemap}}</a>
                             </li>
                         </ul>
                     </div>

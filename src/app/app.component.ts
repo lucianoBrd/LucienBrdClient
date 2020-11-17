@@ -7,6 +7,8 @@ import { Politic } from './shared/models/politic.interface';
 import { DataService } from './shared/service/data.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { TextService } from './shared/service/text.service';
+import { Language } from './shared/models/language.interface';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public url: any;
   title = 'lucienBrdClient';
   public layoutType: string = 'light';
-  public cookie: string = 'En poursuivant votre navigation sur le site, vous acceptez notre utilisation des cookies.';
+  public language: Language;
 
   public politic: Politic;
   public documentPath: String;
@@ -31,15 +33,18 @@ export class AppComponent implements OnInit, OnDestroy {
     public customize: CustomizerService, 
     private router: Router,
     private dataService: DataService,
+    private textService: TextService,
     private metaService: MetaService, 
     private modalService: NgbModal
   ) {
     this.dataService.PAGE = '/politic';
 
+    this.language = textService.getTextByLocal();
+
     /* Set title + meta */
-    this.metaService.setTitle('Accueil');
-    this.metaService.setKeywords('Lucien Burdet créateur de site internet pour les professionnels et particuliers');
-    this.metaService.setDescription('Lucien Burdet créateur de site internet pour les professionnels et particuliers.');
+    this.metaService.setTitle(this.language.home);
+    this.metaService.setKeywords(this.language.homeDesc);
+    this.metaService.setDescription(this.language.homeDesc);
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
