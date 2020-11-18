@@ -14,7 +14,9 @@ import { Language } from './shared/models/language.interface';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [DataService]
+  providers: [
+    DataService,
+  ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   public url: any;
@@ -30,16 +32,16 @@ export class AppComponent implements OnInit, OnDestroy {
   public mdLoad: Boolean;
 
   constructor(
-    public customize: CustomizerService, 
+    public customize: CustomizerService,
     private router: Router,
     private dataService: DataService,
     private textService: TextService,
-    private metaService: MetaService, 
-    private modalService: NgbModal
+    private metaService: MetaService,
+    private modalService: NgbModal,
   ) {
     this.dataService.PAGE = '/politic';
 
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
 
     /* Set title + meta */
     this.metaService.setTitle(this.language.home);
@@ -54,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.language = this.textService.getTextByLocal();
     this.mdLoad = true;
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
       this.politic = data['politic'] as Politic;
@@ -69,15 +72,23 @@ export class AppComponent implements OnInit, OnDestroy {
   onReady() {
     this.mdLoad = false;
   }
-  
+
   customizeLayoutVersion(val) {
-    this.customize.setLayoutVersion(val)
-    this.layoutType = val
+    this.customize.setLayoutVersion(val);
+    this.layoutType = val;
   }
 
   customizeLayoutType(val) {
-    this.customize.setLayoutType(val)
-    this.layoutType = val
+    this.customize.setLayoutType(val);
+    this.layoutType = val;
+  }
+
+  customizeLanguage(val) {
+    if (val === 'en' || val === 'fr') {
+      this.customize.setLanguage(val);
+      /* Refresh page */
+      window.location.reload();
+    }
   }
 
   openVerticallyCentered(content) {

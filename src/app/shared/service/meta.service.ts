@@ -10,7 +10,7 @@ export class MetaService {
   public language: Language;
 
   constructor(private titleService: Title, private metaService: Meta, private textService: TextService) {
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   public setTitle(newTitle: string) {

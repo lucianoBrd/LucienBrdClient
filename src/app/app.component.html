@@ -2,8 +2,17 @@
 <router-outlet></router-outlet>
 <div class="theme-pannel-main">
     <ul>
+        <!--
         <li id="rtl_btn" *ngIf="customize.data.settings.layout_type == 'ltr'" (click)="customizeLayoutType('rtl')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">{{language.rtl}}</span></a></li>
         <li id="ltr_btn" *ngIf="customize.data.settings.layout_type == 'rtl'" (click)="customizeLayoutType('ltr')"><a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">{{language.ltr}}</span></a></li>
+        -->
+        <li *ngIf="customize.data.settings.languageCode == 'en'" (click)="customizeLanguage('fr')">
+            <a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">fr</span></a>
+        </li>
+        <li *ngIf="customize.data.settings.languageCode == 'fr'" (click)="customizeLanguage('en')">
+            <a href="javascript:void(0)" class="btn setting_btn"><span class="rtl-txt">en</span></a>
+        </li>
+
         <li class="sidebar-btn dark-light-btn" *ngIf="customize.data.settings.layout_version == 'dark'" (click)="customizeLayoutVersion('light')">
             <a href="javascript:void(0)" class="dark-light"><span class="theme-layout-version">{{language.light}}</span></a>
         </li>

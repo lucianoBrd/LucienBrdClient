@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/tag';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

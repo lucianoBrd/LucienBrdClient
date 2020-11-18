@@ -17,6 +17,7 @@ export class TextService {
   }
 
   public getTextByLocal() {
+    this.language = LanguageService.getLanguageCodeOnly();
     if (this.language === 'fr') {
       return this.getTextFr();
     } else {

@@ -26,7 +26,7 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private modalService: NgbModal, private textService: TextService) {
     this.dataService.PAGE = '/politic';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

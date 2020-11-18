@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   public language: Language;
 
   constructor(public navServices: NavService, private router: Router, private textService: TextService) {
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

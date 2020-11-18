@@ -23,7 +23,7 @@ export class CvComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
     this.dataService.PAGE = '/cv';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

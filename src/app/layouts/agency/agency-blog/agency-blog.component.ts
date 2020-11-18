@@ -22,7 +22,7 @@ export class AgencyBlogComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/blog/latest';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

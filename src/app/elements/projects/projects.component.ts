@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
     this.dataService.PAGE = '/project';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

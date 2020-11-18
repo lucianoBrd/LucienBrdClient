@@ -11,7 +11,7 @@ export class AgencyHeaderComponent implements OnInit {
   public language: Language;
 
   constructor(private textService: TextService) {
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

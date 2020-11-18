@@ -27,7 +27,7 @@ export class NavService {
    public items;
 
    constructor(private textService: TextService) {
-      this.language = textService.getTextByLocal();
+      this.language = this.textService.getTextByLocal();
       this.MENUITEMS = [
          { path: '/', title: this.language.home, type: 'link' },
          { path: '/projects', title: this.language.projects, type: 'link' },

@@ -28,7 +28,7 @@ export class ContactComponent implements OnInit {
   public siteKey: String = '6LfWON0ZAAAAABVgPLWN-KFJXz2byUnwPzp2Z8oC';
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) { 
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

@@ -38,7 +38,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     private textService: TextService,
   ) {
     this.dataService.PAGE = '/blog';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

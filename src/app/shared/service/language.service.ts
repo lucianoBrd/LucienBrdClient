@@ -8,7 +8,13 @@ export class LanguageService {
   constructor() { }
 
   static getLanguageCodeOnly() {
-    var languageCode: String[] = this.getBrowserLocales({ languageCodeOnly: true });
+    /* Check local storage */
+    var lc = localStorage.getItem("languageCode");
+    if (lc) {
+      return lc;
+    }
+
+    var languageCode: string[] = this.getBrowserLocales({ languageCodeOnly: true });
     if (languageCode) {
       var language = languageCode[0];
       if (language != 'fr'){
@@ -20,7 +26,16 @@ export class LanguageService {
   }
 
   static getLanguage() {
-    var language: String[] = this.getBrowserLocales();
+    /* Check local storage */
+    var lc = localStorage.getItem("languageCode");
+    if (lc) {
+      if (lc != 'fr'){
+        return 'en-EN';
+      } 
+      return 'fr-FR';
+    }
+
+    var language: string[] = this.getBrowserLocales();
     if (language) {
       var languageCode = this.getLanguageCodeOnly();
       if (languageCode != 'fr'){

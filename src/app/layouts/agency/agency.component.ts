@@ -12,7 +12,7 @@ export class AgencyComponent implements OnInit {
   public language: Language;
   
   constructor(private metaService: MetaService, private textService: TextService) {
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

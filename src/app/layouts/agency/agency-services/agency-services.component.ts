@@ -34,7 +34,7 @@ export class AgencyServicesComponent implements OnInit, OnDestroy {
 
   constructor(private modalService: NgbModal, private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/service';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

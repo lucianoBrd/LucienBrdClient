@@ -3,6 +3,7 @@ export class ConfigDB {
 		settings: {
 			layout_type: 'ltr',
 			layout_version: 'light',
+			languageCode: 'en',
 		}
 	}
 }

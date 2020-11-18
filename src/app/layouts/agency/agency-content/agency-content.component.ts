@@ -18,7 +18,7 @@ export class AgencyContentComponent implements OnInit {
   fadeInLeft: any;
 
   constructor(private textService: TextService) {
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

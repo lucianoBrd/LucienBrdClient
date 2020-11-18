@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
     this.dataService.PAGE = '/social';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

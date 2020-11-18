@@ -36,7 +36,7 @@ export class PostComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private textService: TextService,
   ) { 
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

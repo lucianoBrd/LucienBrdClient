@@ -21,7 +21,7 @@ export class AgencyFooterComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService, private textService: TextService) {
     this.dataService.PAGE = '/social';
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
   }
 
   ngOnInit() {

@@ -15,7 +15,7 @@ export class AgencyVideoComponent implements OnInit {
   public safeUrl: SafeResourceUrl;
 
   constructor(private modalService: NgbModal, private textService: TextService, private sanitizer: DomSanitizer) { 
-    this.language = textService.getTextByLocal();
+    this.language = this.textService.getTextByLocal();
     this.url = '//www.youtube.com/embed/' + this.language.youtube + '?autoplay=1';
   }
 
