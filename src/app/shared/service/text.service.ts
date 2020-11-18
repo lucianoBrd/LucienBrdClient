@@ -108,6 +108,8 @@ export class TextService {
       notFoundDesc: 'La page que vous essayez d\'atteindre n\'est pasdisponible actuellement. Cela peut être dû au fait que la page n\'existe pas ou a été déplacée.',
       goHome: 'Retour à l\'accueil',
       notFoundTitle: 'Page non trouvée',
+      download: 'Télécharger',
+      website: 'Site',
     };
   }
 
@@ -186,6 +188,8 @@ export class TextService {
       notFoundDesc: 'The page you are attempting to reach is currently not available. This may be because the page does not exist or has been moved.',
       goHome: 'Back to home',
       notFoundTitle: 'Page not found',
+      download: 'Download',
+      website: 'website',
     };
   }
 

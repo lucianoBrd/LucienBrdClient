@@ -67,4 +67,6 @@ export interface Language {
     notFoundDesc: string,
     notFoundTitle: string,
     goHome: string,
+    download: string,
+    website: string,
 }

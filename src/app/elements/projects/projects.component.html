@@ -52,7 +52,7 @@
                                                 <div  class="btn-bottom m-t-20">
                                                     <a *ngIf="project.url" href="{{project.url}}" target="_blank" class="text-uppercase m-r-25">
                                                         <i class="fa fa-globe m-r-10" aria-hidden="true"></i>
-                                                        Site
+                                                        {{language.website}}
                                                     </a>
                                                     <a *ngIf="project.git" href="{{project.git}}" target="_blank" class="text-uppercase m-r-25">
                                                         <i class="fa fa-github m-r-10" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                                                     </a>
                                                     <a *ngIf="project.document" href="{{documentPath + project.document}}" target="_blank" class="text-uppercase m-r-25">
                                                         <i class="fa fa-download m-r-10" aria-hidden="true"></i>
-                                                        Télécharger
+                                                        {{language.download}}
                                                     </a>
                                                 </div>
                                             </div>
