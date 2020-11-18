@@ -1,42 +1,40 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Cv } from 'src/app/shared/models/cv.interface';
+import { Education } from 'src/app/shared/models/education.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
-  selector: 'app-cv',
-  templateUrl: './cv.component.html',
-  styleUrls: ['./cv.component.scss'],
+  selector: 'app-education',
+  templateUrl: './education.component.html',
+  styleUrls: ['./education.component.scss'],
   providers: [DataService]
 })
-export class CvComponent implements OnInit, OnDestroy {
-  public mobile: boolean = false;
-  public cv: Cv;
-  public documentPath: String;
+export class EducationComponent implements OnInit, OnDestroy {
+
+  public educations: Education[];
+  public imagePath: String;
   public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
-    this.dataService.PAGE = '/cv';
+    this.dataService.PAGE = '/education';
     this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {
-    this.mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     /* Set title + meta */
-    this.metaService.setTitle(this.language.cv);
-    this.metaService.setKeywords(this.language.cv);
-    this.metaService.setDescription(this.language.cvDesc);
+    this.metaService.setTitle(this.language.education);
+    this.metaService.setKeywords(this.language.education);
+    this.metaService.setDescription(this.language.educationDesc);
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-      this.cv = data['cv'] as Cv;
-      this.documentPath = data['documentPath'];
+      this.educations = data['educations'] as Education[];
+      this.imagePath = data['imagePath'];
     })
   }
 

@@ -6,7 +6,7 @@
     <div class="link-btns" *ngIf="tags">
         <ul>
             <li class="buttons" *ngFor="let tag of tags">
-                <a [routerLink]="['/blog/tag', tag.title]">{{tag.title}}</a>
+                <a [routerLink]="['/blog/tag', tag.slug]">{{tag.title}}</a>
             </li>
         </ul>
     </div>

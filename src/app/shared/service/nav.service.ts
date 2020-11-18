@@ -30,12 +30,12 @@ export class NavService {
       this.language = textService.getTextByLocal();
       this.MENUITEMS = [
          { path: '/', title: this.language.home, type: 'link' },
-         { path: '/projets', title: this.language.projects, type: 'link' },
+         { path: '/projects', title: this.language.projects, type: 'link' },
          { path: '/blog', title: this.language.blog, type: 'link' },
          { path: '/contact', title: this.language.contact, type: 'link' },
-         { path: '/formation', title: this.language.education, type: 'link' },
+         { path: '/education', title: this.language.education, type: 'link' },
          { path: '/cv', title: this.language.cv, type: 'link' },
-         { path: '/a-propos', title: this.language.about, type: 'link' },
+         { path: '/about-me', title: this.language.about, type: 'link' },
       ];
 
       // Array

@@ -10,7 +10,7 @@ import { CountToModule } from 'angular-count-to';
 import { ElementsComponent } from './elements.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { FormationComponent } from './formation/formation.component';
+import { EducationComponent } from './education/education.component';
 import { LayoutsModule } from '../layouts/layouts.module'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -26,7 +26,7 @@ import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, FormationComponent, SidebarComponent, PostComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, EducationComponent, SidebarComponent, PostComponent, PageNotFoundComponent, ProjectsComponent],
   imports: [
     CommonModule,
     ElementsRoutingModule,

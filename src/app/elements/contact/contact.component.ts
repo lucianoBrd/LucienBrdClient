@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { NgForm } from '@angular/forms';
 import { DataService } from 'src/app/shared/service/data.service';
+import { Language } from 'src/app/shared/models/language.interface';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +12,8 @@ import { DataService } from 'src/app/shared/service/data.service';
   providers: [DataService]
 })
 export class ContactComponent implements OnInit {
+  public language: Language;
+  
   private name: String;
   private email: String;
   private message: String;
@@ -23,13 +27,15 @@ export class ContactComponent implements OnInit {
 
   public siteKey: String = '6LfWON0ZAAAAABVgPLWN-KFJXz2byUnwPzp2Z8oC';
 
-  constructor(private dataService: DataService, private metaService: MetaService) { }
+  constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) { 
+    this.language = textService.getTextByLocal();
+  }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('Contact');
-    this.metaService.setKeywords('contact, mail, coordonnées');
-    this.metaService.setDescription('Je peux vous établir gratuitement un devis sur simple demande. La satisfaction du client étant ma priorité, je mettrai tout en œuvre pour répondre à vos attentes et exigences.');
+    this.metaService.setTitle(this.language.contact);
+    this.metaService.setKeywords(this.language.contact + ', ' + this.language.contactDesc);
+    this.metaService.setDescription(this.language.contactDesc);
 
     this.error = false;
     this.errorMail = false;

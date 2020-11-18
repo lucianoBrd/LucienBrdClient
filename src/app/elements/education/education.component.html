@@ -5,7 +5,7 @@
                 <div class="title title2 title-inner">
                     <div class="main-title">
                         <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
-                            <span>formations</span>
+                            <span>{{language.education}}</span>
                         </h2>
                     </div>
                 </div>
@@ -13,24 +13,24 @@
         </div>
     </div>
 </div>
-<section id="agency-formation-body" class="yoga event bg bg-gradient-color">
+<section id="agency-education-body" class="yoga event bg bg-gradient-color">
     <div class="container">
-        <div class="row" *ngIf="!formations">
+        <div class="row" *ngIf="!educations">
             <div class="col-md-12">
                 <app-loader-bis-white></app-loader-bis-white>
             </div>
         </div>
-        <div class="row" *ngIf="formations">
-            <div class="col-md-6" *ngFor="let formation of formations">
+        <div class="row" *ngIf="educations">
+            <div class="col-md-6" *ngFor="let education of educations">
                 <div class="event-container d-flex">
-                    <div class="yoga-circle" [ngStyle]="{'background-image': 'url(' + imagePath + formation.image + ')'}">
+                    <div class="yoga-circle" [ngStyle]="{'background-image': 'url(' + imagePath + education.image + ')'}">
                     </div>
                     <div class="event-info center-content">
-                        <h4 class="text-white address">{{formation.title}}</h4>
-                        <h6 class="text-white time">{{formation.date}}</h6>
+                        <h4 class="text-white address">{{education.title}}</h4>
+                        <h6 class="text-white time">{{education.date}}</h6>
                         <h6 class="text-white city">
                             <i class="fa fa-map-marker m-r-5" aria-hidden="true"></i>
-                            {{formation.place}}
+                            {{education.place}}
                         </h6>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-export interface Formation {
+export interface Education {
     id: number,
     image: string,
     title: string,

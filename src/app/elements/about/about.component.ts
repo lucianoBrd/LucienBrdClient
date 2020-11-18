@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Language } from 'src/app/shared/models/language.interface';
 import { Social } from 'src/app/shared/models/social.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-about',
@@ -14,18 +16,20 @@ import { MetaService } from 'src/app/shared/service/meta.service';
 export class AboutComponent implements OnInit, OnDestroy {
   public age: number = this.ageFromDateOfBirthday('08/06/1999');
   public socials: Social[] = [];
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private dataService: DataService, private metaService: MetaService) {
+  constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
     this.dataService.PAGE = '/social';
+    this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('A propos');
-    this.metaService.setKeywords('a propos');
-    this.metaService.setDescription('Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.');
+    this.metaService.setTitle(this.language.about);
+    this.metaService.setKeywords(this.language.about);
+    this.metaService.setDescription(this.language.aboutPara[0]);
 
     this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
       this.socials = data['socials'] as Social[];

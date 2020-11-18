@@ -6,15 +6,13 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2 col-12">
                         <div class="central-body">
-                            <h1 class="text-inner">404</h1>
-                            <h3 class="sub-text text-white">page non trouvée</h3>
+                            <h1 class="text-inner">{{language.notFound}}</h1>
+                            <h3 class="sub-text text-white">{{language.notFoundTitle}}</h3>
                             <p class="text-404 text-white text-center">
-                                La page que vous essayez d'atteindre n'est pas
-                                disponible actuellement. Cela peut être dû au fait que la page n'existe pas ou a été
-                                déplacée.
+                                {{language.notFoundDesc}}
                             </p>
                             <a [routerLink]="['/']" class="btn btn-default primary-btn transparent m-t-20">
-                                retour à l'accueil
+                                {{language.goHome}}
                             </a>
                         </div>
                     </div>

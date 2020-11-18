@@ -5,7 +5,7 @@ import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
 import { ContactComponent } from './contact/contact.component';
 import { CvComponent } from './cv/cv.component';
-import { FormationComponent } from './formation/formation.component';
+import { EducationComponent } from './education/education.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'a-propos',
+        path: 'about-me',
         component: AboutComponent,
          data: {
           
@@ -56,15 +56,15 @@ const routes: Routes = [
         }
       },
       {
-        path: 'projets',
+        path: 'projects',
         component: ProjectsComponent,
          data: {
           
         }
       },
       {
-        path: 'formation',
-        component: FormationComponent,
+        path: 'education',
+        component: EducationComponent,
          data: {
           
         }

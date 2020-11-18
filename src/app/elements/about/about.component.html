@@ -6,25 +6,12 @@
                     <div class="text-center title title2 title-inner">
                         <div class="main-title">
                             <h2 class="font-primary borders text-center text-uppercase m-b-0">
-                                <span class="">à propos</span>
+                                <span class="">{{language.about}}</span>
                             </h2>
                         </div>
                         <div class="format-sub-text mb-0">
-                            <p class="p-light about-para">
-                                Etant passionné par l’informatique, j’ai lancé ma propre entreprise. Ma soif de
-                                connaissance m’a permis de développer mes compétences et de m’enrichir d’expérience.
-                            </p>
-                            <p class="p-light about-para">
-                                Les travaux que je peux effectuer sont des solutions pour le web : E-Commerce, site
-                                vitrine…
-                            </p>
-                            <p class="p-light about-para">
-                                Je peux vous établir gratuitement un devis sur simple demande. La satisfaction du client
-                                étant ma priorité, je mettrai tout en œuvre pour répondre à vos attentes et exigences.
-
-                                Je ne me contente pas de simplement développer votre projet : je vous propose une étude
-                                minutieuse et je peux vous apporter mon expertise pour couvrir tous vos besoins en
-                                termes de communication, publicité, référencement…
+                            <p class="p-light about-para" *ngFor="let para of language.aboutPara">
+                                {{para}}
                             </p>
                         </div>
                     </div>
@@ -50,7 +37,7 @@
                             </div>
                             <div class="employee">
                                 <h5 class="e-name text-center font-secondary">Lucien Burdet</h5>
-                                <h6 class="post text-center ">{{age}} ans</h6>
+                                <h6 class="post text-center ">{{age}} {{language.years}}</h6>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
                 <div class="title title2 title-inner">
                     <div class="main-title">
                         <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
-                            <span>contact</span>
+                            <span>{{language.contact}}</span>
                         </h2>
                     </div>
                 </div>
@@ -22,13 +22,13 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="contact-details text-center">
-                        <h4 class="contact-heading">Disponible dans toute la france</h4>
-                        <h6 class="contact-sub-text">Lyon, France.</h6>
+                        <h4 class="contact-heading">{{language.contactTitle}}</h4>
+                        <h6 class="contact-sub-text">{{language.contactSubTitle}}</h6>
                         <h6 class="contact-sub-text">
                             <a class="agency-contact-mail-to" href="mailto:contact@lucien-brd.com">contact@lucien-brd.com</a>
                         </h6>
-                        <h6 *ngIf="hasSentError" class="contact-sub-text">Une erreur est survenue, merci de réessayer.</h6>
-                        <h6 *ngIf="hasSent" class="contact-sub-text">Merci pour votre message, je vous répondrais dans les meilleurs délais.</h6>
+                        <h6 *ngIf="hasSentError" class="contact-sub-text">{{language.contactError}}</h6>
+                        <h6 *ngIf="hasSent" class="contact-sub-text">{{language.contactSuccess}}</h6>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -39,17 +39,17 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input [ngClass]="{'error-form' : error}" required ngModel name="name" type="text" placeholder="votre nom">
+                                <input [ngClass]="{'error-form' : error}" required ngModel name="name" type="text" placeholder="{{language.contactName}}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input [ngClass]="{'error-form' : errorMail || error}" required ngModel name="email" type="email" placeholder="votre email">
+                                <input [ngClass]="{'error-form' : errorMail || error}" required ngModel name="email" type="email" placeholder="{{language.contactEmail}}">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <textarea [ngClass]="{'error-form' : error}" required ngModel name="message" class="form-control" rows="6" placeholder="votre message"></textarea>
+                                <textarea [ngClass]="{'error-form' : error}" required ngModel name="message" class="form-control" rows="6" placeholder="{{language.contactMessage}}"></textarea>
                             </div>
                         </div>
                         <div class="col-12">
@@ -58,7 +58,7 @@
                             </re-captcha>
                         </div>
                         <div class="booking" *ngIf="!sending">
-                            <button type="submit" class="btn btn-default btn-gradient text-white">envoyer</button>
+                            <button type="submit" class="btn btn-default btn-gradient text-white">{{language.send}}</button>
                         </div>
                         <div class="col-12" *ngIf="sending">
                             <app-loader-bis></app-loader-bis>

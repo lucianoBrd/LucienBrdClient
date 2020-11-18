@@ -5,9 +5,9 @@
                 <div class="title title2 title-inner">
                     <div class="main-title">
                         <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
-                            <span>Blog</span>
+                            <span>{{language.blog}}</span>
                         </h2>
-                        <h4 *ngIf="!tag">Tous les articles</h4>
+                        <h4 *ngIf="!tag">{{language.blogAllPost}}</h4>
                         <h4 *ngIf="tag">{{tag}}</h4>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                                             <div class="d-flex center-text">
                                                 <i class="fa fa-tags m-r-10" aria-hidden="true"></i>
                                                 <h6 class="m-r-15 font-blog" *ngFor="let tag of blog.tags">
-                                                    <a [routerLink]="['/blog/tag', tag.title]">{{tag.title}}</a>
+                                                    <a [routerLink]="['/blog/tag', tag.slug]">{{tag.title}}</a>
                                                 </h6>
                                             </div>
                                         </div>
@@ -50,7 +50,7 @@
                                         <p class="para2">{{blog.content}}
                                         </p>
                                         <div class="btn-bottom  m-t-20">
-                                            <a [routerLink]="['/blog', blog.slug]" class="text-uppercase">Voir plus</a>
+                                            <a [routerLink]="['/blog', blog.slug]" class="text-uppercase">{{language.readMore}}</a>
                                         </div>
                                     </div>
                                 </div>

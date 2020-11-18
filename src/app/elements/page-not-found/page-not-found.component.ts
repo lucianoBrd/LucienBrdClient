@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Language } from 'src/app/shared/models/language.interface';
 import { MetaService } from 'src/app/shared/service/meta.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,13 +9,16 @@ import { MetaService } from 'src/app/shared/service/meta.service';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
+  public language: Language;
 
-  constructor(private metaService: MetaService) { }
+  constructor(private metaService: MetaService, private textService: TextService) {
+    this.language = textService.getTextByLocal();
+  }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('404');
-    this.metaService.setDescription('La page que vous essayez d\'atteindre n\'est pasdisponible actuellement. Cela peut être dû au fait que la page n\'existe pas ou a été déplacée.');
+    this.metaService.setTitle(this.language.notFound);
+    this.metaService.setDescription(this.language.notFoundDesc);
   }
 
 }

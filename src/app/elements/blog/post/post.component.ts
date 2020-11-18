@@ -4,8 +4,10 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
+import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-post',
@@ -22,17 +24,25 @@ export class PostComponent implements OnInit, OnDestroy {
   public blog: Blog;
   public imagePath: String;
   public documentPath: String;
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   public mdLoad: Boolean;
 
-  constructor(private dataService: DataService, private metaService: MetaService, private route: ActivatedRoute) { }
+  constructor(
+    private dataService: DataService, 
+    private metaService: MetaService, 
+    private route: ActivatedRoute,
+    private textService: TextService,
+  ) { 
+    this.language = textService.getTextByLocal();
+  }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('Post');
-    this.metaService.setDescription('Découvrez cet article très intéressant.');
+    this.metaService.setTitle(this.language.post);
+    this.metaService.setDescription(this.language.postDesc);
     this.sub = this.route.params.subscribe(params => {
       this.mdLoad = true;
       this.blog = null;
@@ -50,7 +60,7 @@ export class PostComponent implements OnInit, OnDestroy {
         /* Set title + meta */
         if (this.blog) {
           this.metaService.setTitle(this.blog.title);
-          this.metaService.setKeywords('post,' + this.blog.title + ',' + this.blog.content);
+          this.metaService.setKeywords(this.language.post + ', ' + this.blog.title + ', ' + this.blog.content);
           this.metaService.setDescription(this.blog.content);
         }
       })

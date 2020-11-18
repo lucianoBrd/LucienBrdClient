@@ -4,8 +4,10 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
+import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
+import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
   selector: 'app-blog',
@@ -20,6 +22,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   public tag: String;
   public blogs: Blog[];
   public imagePath: String;
+  public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -28,15 +31,21 @@ export class BlogComponent implements OnInit, OnDestroy {
     originTop: true
   };
 
-  constructor(private dataService: DataService, private metaService: MetaService, private route: ActivatedRoute) {
+  constructor(
+    private dataService: DataService, 
+    private metaService: MetaService, 
+    private route: ActivatedRoute,
+    private textService: TextService,
+  ) {
     this.dataService.PAGE = '/blog';
+    this.language = textService.getTextByLocal();
   }
 
   ngOnInit() {
     /* Set title + meta */
-    this.metaService.setTitle('Blog');
-    this.metaService.setKeywords('blog, tous les articles');
-    this.metaService.setDescription('Retrouvez tous les articles.');
+    this.metaService.setTitle(this.language.blog);
+    this.metaService.setKeywords(this.language.blog + ', ' + this.language.blogDesc);
+    this.metaService.setDescription(this.language.blogDesc);
     this.sub = this.route.params.subscribe(params => {
       this.blogs = null;
 
@@ -46,9 +55,9 @@ export class BlogComponent implements OnInit, OnDestroy {
         this.dataService.PAGE = '/blog/tag/' + this.tag;
 
         /* Set title + meta */
-        this.metaService.setTitle('Blog ' + this.tag);
-        this.metaService.setKeywords('blog, tous les articles, ' + this.tag);
-        this.metaService.setDescription('Retrouvez tous les articles en lien avec : ' + this.tag + '.');
+        this.metaService.setTitle(this.language.blog + ' ' + this.tag);
+        this.metaService.setKeywords(this.language.blog + ', ' + this.language.blogDesc + ', ' + this.tag);
+        this.metaService.setDescription(this.language.blogTagDesc + this.tag + '.');
       } else {
         this.dataService.PAGE = '/blog';
       }
