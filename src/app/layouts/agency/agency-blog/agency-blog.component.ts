@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class AgencyBlogComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService, private textService: TextService) {
-    this.dataService.PAGE = '/blog/latest';
+    this.dataService.PAGE = '/blog/latest/' + LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 

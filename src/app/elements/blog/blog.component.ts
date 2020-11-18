@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
@@ -18,6 +19,8 @@ import { TextService } from 'src/app/shared/service/text.service';
 export class BlogComponent implements OnInit, OnDestroy {
 
   private sub: any;
+
+  private languageCode: string;
 
   public tag: String;
   public blogs: Blog[];
@@ -37,7 +40,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private textService: TextService,
   ) {
-    this.dataService.PAGE = '/blog';
+    this.languageCode = LanguageService.getLanguageCodeOnly();
+    this.dataService.PAGE = '/blog/' + this.languageCode;
     this.language = this.textService.getTextByLocal();
   }
 
@@ -52,14 +56,14 @@ export class BlogComponent implements OnInit, OnDestroy {
       /* Get tag */
       this.tag = params['tag'];
       if (this.tag) {
-        this.dataService.PAGE = '/blog/tag/' + this.tag;
+        this.dataService.PAGE = '/blog/tag/' + this.languageCode + '/' + this.tag;
 
         /* Set title + meta */
         this.metaService.setTitle(this.language.blog + ' ' + this.tag);
         this.metaService.setKeywords(this.language.blog + ', ' + this.language.blogDesc + ', ' + this.tag);
         this.metaService.setDescription(this.language.blogTagDesc + this.tag + '.');
       } else {
-        this.dataService.PAGE = '/blog';
+        this.dataService.PAGE = '/blog/' + this.languageCode;
       }
 
       this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {

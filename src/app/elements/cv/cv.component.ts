@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Cv } from 'src/app/shared/models/cv.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
@@ -22,7 +23,7 @@ export class CvComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
-    this.dataService.PAGE = '/cv';
+    this.dataService.PAGE = '/cv/' + LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 

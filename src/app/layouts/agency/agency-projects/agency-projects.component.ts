@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Language } from 'src/app/shared/models/language.interface';
 import { TextService } from 'src/app/shared/service/text.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 
 @Component({
   selector: 'app-agency-projects',
@@ -21,7 +22,7 @@ export class AgencyProjectsComponent implements OnInit, OnDestroy  {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService, private textService: TextService) {
-    this.dataService.PAGE = '/project/random';
+    this.dataService.PAGE = '/project/random/' + LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 

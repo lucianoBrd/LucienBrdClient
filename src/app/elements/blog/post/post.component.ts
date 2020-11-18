@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
@@ -18,6 +19,8 @@ import { TextService } from 'src/app/shared/service/text.service';
 export class PostComponent implements OnInit, OnDestroy {
 
   private sub: any;
+
+  private languageCode: string;
 
   public url: String;
   public slug: String;
@@ -36,6 +39,7 @@ export class PostComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private textService: TextService,
   ) { 
+    this.languageCode = LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 
@@ -50,7 +54,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
       /* Get slug */
       this.slug = params['slug'];
-      this.dataService.PAGE = '/blog/' + this.slug;
+      this.dataService.PAGE = '/blog/' + this.languageCode + '/' + this.slug;
 
       this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
         this.blog = data['blog'] as Blog;

@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Language } from 'src/app/shared/models/language.interface';
 import { Politic } from 'src/app/shared/models/politic.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class AgencyCopyrightComponent implements OnInit, OnDestroy {
   public mdLoad: Boolean;
 
   constructor(private dataService: DataService, private modalService: NgbModal, private textService: TextService) {
-    this.dataService.PAGE = '/politic';
+    this.dataService.PAGE = '/politic/' + LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 

@@ -9,6 +9,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { TextService } from './shared/service/text.service';
 import { Language } from './shared/models/language.interface';
+import { LanguageService } from './shared/service/language.service';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private metaService: MetaService,
     private modalService: NgbModal,
   ) {
-    this.dataService.PAGE = '/politic';
+    this.dataService.PAGE = '/politic/' + LanguageService.getLanguageCodeOnly();
 
     this.language = this.textService.getTextByLocal();
 

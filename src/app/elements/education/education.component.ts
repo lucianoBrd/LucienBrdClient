@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Education } from 'src/app/shared/models/education.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
@@ -22,7 +23,7 @@ export class EducationComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private dataService: DataService, private metaService: MetaService, private textService: TextService) {
-    this.dataService.PAGE = '/education';
+    this.dataService.PAGE = '/education/' + LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
   }
 
