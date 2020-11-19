@@ -27,7 +27,7 @@ export class ContactComponent implements OnInit {
   public hasSent: Boolean;
   public hasSentError: Boolean;
 
-  public siteKey: String ;
+  public siteKey: String;
 
   constructor(
     private dataService: DataService, 

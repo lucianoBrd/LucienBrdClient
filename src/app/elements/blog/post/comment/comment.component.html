@@ -1,0 +1,89 @@
+<!-- Comment Sec Start -->
+<h3 *ngIf="!comments" class="page-header-comment"><i class="fa fa-comments-o"></i> {{language.comments}}</h3>
+<h3 *ngIf="comments" class="page-header-comment"><i class="fa fa-comments-o"></i> {{comments.length}} {{language.comments}}</h3>
+
+<div *ngIf="comments" class="comment-list blog_comment">
+    <div class="comment_sec" *ngFor="let comment of comments">
+        <article class="row">
+            <div class="" [ngClass]="comment.Id==2?'col-11 offset-1':'col-12'">
+                <div class="blog_center" [ngClass]="comment.Id==2?re_comment:''">
+                    <div>
+                        <figure class="thumbnail">
+                            <img [src]="imagePath + comment.image" alt="{{comment.user.name}}">
+                        </figure>
+                    </div>
+                    <div class="blog_user arrow left">
+                        <div class="panel-body">
+                            <div class="text-left">
+                                <div class="comment-user"><i class="fa fa-user"></i>
+                                    <h6>{{comment.user.name}}</h6>
+                                </div>
+                                <div class="comment-date"><i class="fa fa-clock-o"></i>
+                                    <h6>{{comment.date | date}}</h6>
+                                </div>
+                            </div>
+                            <div class="comment-post">
+                                <p>
+                                    {{comment.message}}
+                                </p>
+                            </div>
+                            <a href="#" class="link-btn">
+                                <i class="fa fa-reply"></i>
+                                {{language.reply}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!--Comment Sec Start-->
+    </div>
+</div>
+<div *ngIf="!comments" class="comment-list blog_comment">
+    <app-loader-bis></app-loader-bis>
+</div>
+<!-- Comment Sec End -->
+<div class="quote_2 comment_form_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 quote_form">
+                <hr />
+                <h3 class="page-header-comment mb-4">{{language.leaveComment}}</h3>
+                <h6 *ngIf="hasSentError" class="page-header-comment mb-4">{{language.contactError}}</h6>
+                <h6 *ngIf="hasSent" class="page-header-comment mb-4">{{language.commentSuccess}}</h6>
+
+                <form #commentForm="ngForm" (submit)="onFormSubmit(commentForm)">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="commentName">{{language.contactName}}</label>
+                            <input [ngClass]="{'error-form' : error}" ngModel type="text" name="name"
+                                class="form-control" id="commentName" placeholder="{{language.contactName}}" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="commentMail">{{language.contactEmail}}</label>
+                            <input [ngClass]="{'error-form' : errorMail || error}" ngModel type="email" name="email"
+                                class="form-control" id="commentMail" placeholder="{{language.contactEmail}}" required="">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="commentMessage">{{language.commentMessage}}</label>
+                            <textarea [ngClass]="{'error-form' : error}" ngModel name="message"
+                                class="form-control msg_coment" id="commentMessage" rows="3"
+                                placeholder="{{language.commentMessage}}" required=""></textarea>
+                        </div>
+                        <div class="col-12">
+                            <re-captcha (resolved)="resolved($event)" siteKey="{{siteKey}}">
+                            </re-captcha>
+                        </div>
+                        <div *ngIf="!sending">
+                            <button type="submit"
+                                class="btn btn-default primary-btn m-t-20 radius-0">{{language.send}}</button>
+                        </div>
+                        <div class="col-12" *ngIf="sending">
+                            <app-loader-bis></app-loader-bis>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

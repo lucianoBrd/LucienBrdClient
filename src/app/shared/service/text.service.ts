@@ -113,6 +113,12 @@ export class TextService {
       receiveFile: 'Recevoir par mail le fichier',
       receive: 'Recevoir le fichier',
       receiveSuccess: 'Fichier envoyé avec grand succès ! Vous le recevrez d\'ici peu.',
+      comments: 'Commentaire(s)',
+      leaveComment: 'Laissez votre commentaire',
+      postComment: 'Poster un Commentaire',
+      reply: 'Répondre',
+      commentMessage: 'Votre commentaire',
+      commentSuccess: 'Merci pour votre commentaire',
     };
   }
 
@@ -196,6 +202,12 @@ export class TextService {
       receiveFile: 'Receive the file by mail',
       receive: 'Receive the file',
       receiveSuccess: 'File sent with great success ! You will receive it shortly.',
+      comments: 'Comment(s)',
+      leaveComment: 'Leave you comment',
+      postComment: 'Post Comment',
+      reply: 'Reply',
+      commentMessage: 'Your comment',
+      commentSuccess: 'Thank you for your comment',
     };
   }
 

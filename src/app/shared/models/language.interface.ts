@@ -72,4 +72,10 @@ export interface Language {
     receiveFile: string,
     receive: string,
     receiveSuccess: string,
+    comments: string,
+    leaveComment: string,
+    postComment: string,
+    reply: string,
+    commentMessage: string,
+    commentSuccess: string,
 }

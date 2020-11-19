@@ -25,6 +25,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
 import { DownloadComponent } from './download/download.component';
+import { CommentComponent } from './blog/post/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DownloadComponent } from './download/download.component';
     PostComponent, 
     PageNotFoundComponent, 
     ProjectsComponent,
-    DownloadComponent
+    DownloadComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
