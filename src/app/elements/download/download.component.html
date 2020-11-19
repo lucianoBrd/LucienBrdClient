@@ -1,0 +1,66 @@
+<div class="agency-page" [ngStyle]="{'background-image': 'url(assets/images/agency/slider/slider.png)'}">
+    <div class="container agency-title">
+        <div class="row">
+            <div class="col-12">
+                <div class="title title2 title-inner">
+                    <div class="main-title">
+                        <h2 class="font-primary borders text-center main-text text-uppercase m-b-0">
+                            <span>{{language.download}}</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="agency-contact-body" class="bg-light-inner p-b-0">
+    <section class="music bg-footer"
+        [ngStyle]="{'background-image': 'url(assets/images/agency/service/services-backgrondpng.png)'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-details text-center">
+                        <h4 class="contact-heading" *ngIf="!file">{{language.download}}</h4>
+                        <h4 class="contact-heading" *ngIf="file">{{language.download}} {{file}}</h4>
+
+                        <h6 class="contact-sub-text">{{language.receiveFile}}</h6>
+
+                        <h6 *ngIf="hasSentError" class="contact-sub-text">{{language.contactError}}</h6>
+                        <h6 *ngIf="hasSent" class="contact-sub-text">{{language.receiveSuccess}}</h6>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+            <div class="form form-footer p-t-50">
+                <form #downloadForm="ngForm" (submit)="onFormSubmit(downloadForm)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input [ngClass]="{'error-form' : error}" required ngModel name="name" type="text" placeholder="{{language.contactName}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input [ngClass]="{'error-form' : errorMail || error}" required ngModel name="email" type="email" placeholder="{{language.contactEmail}}">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <re-captcha (resolved)="resolved($event)" 
+                            siteKey="{{siteKey}}">  
+                            </re-captcha>
+                        </div>
+                        <div class="booking" *ngIf="!sending">
+                            <button type="submit" class="btn btn-default btn-gradient text-white">{{language.receive}}</button>
+                        </div>
+                        <div class="col-12" *ngIf="sending">
+                            <app-loader-bis></app-loader-bis>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</section>

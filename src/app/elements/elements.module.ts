@@ -24,9 +24,22 @@ import { BlogComponent } from './blog/blog.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
+import { DownloadComponent } from './download/download.component';
 
 @NgModule({
-  declarations: [ElementsComponent, AboutComponent, BlogComponent, ContactComponent, CvComponent, EducationComponent, SidebarComponent, PostComponent, PageNotFoundComponent, ProjectsComponent],
+  declarations: [
+    ElementsComponent, 
+    AboutComponent, 
+    BlogComponent, 
+    ContactComponent, 
+    CvComponent, 
+    EducationComponent, 
+    SidebarComponent, 
+    PostComponent, 
+    PageNotFoundComponent, 
+    ProjectsComponent,
+    DownloadComponent
+  ],
   imports: [
     CommonModule,
     ElementsRoutingModule,

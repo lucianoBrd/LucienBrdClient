@@ -5,6 +5,7 @@ import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
 import { ContactComponent } from './contact/contact.component';
 import { CvComponent } from './cv/cv.component';
+import { DownloadComponent } from './download/download.component';
 import { EducationComponent } from './education/education.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -37,6 +38,13 @@ const routes: Routes = [
       {
         path: 'blog/:slug',
         component: PostComponent,
+         data: {
+          
+        }
+      },
+      {
+        path: 'download/:file',
+        component: DownloadComponent,
          data: {
           
         }

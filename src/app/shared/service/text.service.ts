@@ -110,6 +110,9 @@ export class TextService {
       notFoundTitle: 'Page non trouvée',
       download: 'Télécharger',
       website: 'Site',
+      receiveFile: 'Recevoir par mail le fichier',
+      receive: 'Recevoir le fichier',
+      receiveSuccess: 'Fichier envoyé avec grand succès ! Vous le recevrez d\'ici peu.',
     };
   }
 
@@ -190,6 +193,9 @@ export class TextService {
       notFoundTitle: 'Page not found',
       download: 'Download',
       website: 'website',
+      receiveFile: 'Receive the file by mail',
+      receive: 'Receive the file',
+      receiveSuccess: 'File sent with great success ! You will receive it shortly.',
     };
   }
 

@@ -69,4 +69,7 @@ export interface Language {
     goHome: string,
     download: string,
     website: string,
+    receiveFile: string,
+    receive: string,
+    receiveSuccess: string,
 }
