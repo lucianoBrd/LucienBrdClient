@@ -16,7 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProjectsComponent } from './projects/projects.component';
 import { CvComponent } from './cv/cv.component';
 import { FormsModule } from '@angular/forms';
-import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaComponent, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { SecurityContext } from '@angular/core';
@@ -26,6 +26,12 @@ import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
 import { DownloadComponent } from './download/download.component';
 import { CommentComponent } from './blog/comment/comment.component';
+
+RecaptchaComponent.prototype.ngOnDestroy = function() {
+  if (this.subscription) {
+    this.subscription.unsubscribe();
+  }
+}
 
 @NgModule({
   declarations: [

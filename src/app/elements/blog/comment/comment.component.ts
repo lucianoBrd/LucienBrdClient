@@ -34,9 +34,11 @@ export class CommentComponent implements OnInit, OnDestroy {
 
   public error: Boolean;
   public errorMail: Boolean;
+  public errorMailReply: Boolean;
   public sending: Boolean;
   public hasSent: Boolean;
   public hasSentError: Boolean;
+  public errorReply: Boolean;
 
   public siteKey: String;
 
@@ -66,10 +68,7 @@ export class CommentComponent implements OnInit, OnDestroy {
   }
 
   private getComments() {
-    this.error = false;
-    this.errorMail = false;
-    this.sending = false;
-    this.hasSentError = false;
+    this.resetErrors(true);
 
     this.comments = null;
 
@@ -82,12 +81,20 @@ export class CommentComponent implements OnInit, OnDestroy {
     })
   }
 
-  onFormSubmit(commentForm: NgForm) {
+  private resetErrors(getCommentsCase) {
     this.error = false;
     this.errorMail = false;
     this.sending = false;
-    this.hasSent = false;
+    if (!getCommentsCase){
+      this.hasSent = false;
+    }
     this.hasSentError = false;
+    this.errorReply = false;
+    this.errorMailReply = false;
+  }
+
+  onFormSubmit(commentForm: NgForm) {
+    this.resetErrors(false);
 
     if (commentForm.valid && this.captcha) {
       this.name = commentForm.controls['name'].value;
@@ -124,6 +131,50 @@ export class CommentComponent implements OnInit, OnDestroy {
       }
     } else {
       this.error = true;
+    }
+  }
+
+  onFormSubmitReply(commentFormReply: NgForm) {
+    this.resetErrors(false);
+
+    if (commentFormReply.valid && this.captcha) {
+      this.name = commentFormReply.controls['name'].value;
+      this.email = commentFormReply.controls['email'].value;
+      this.message = commentFormReply.controls['message'].value;
+
+      if (this.formService.ValidateEmail(this.email)) {
+        this.sending = true;
+
+        /* Sent to api */
+        this.dataService.PARAMS = {
+          captcha: this.captcha, 
+          name: this.name, 
+          mail: this.email, 
+          message: this.message,
+          post: this.slug,
+          reply: this.replyComment.id,
+        };
+        this.dataService.PAGE = '/comment/reply';
+        this.dataService.sendGetRequest().subscribe((data: any[]) => {
+          if (data['error'] == true) {
+            this.hasSentError = true;
+          } else {
+            this.hasSent = true;
+            commentFormReply.resetForm();
+            /* Refresh comments */
+            this.getComments();
+          }
+          this.sending = false;
+          /* Close modal */
+          this.modalService.dismissAll();
+
+        });
+
+      } else {
+        this.errorMailReply = true;
+      }
+    } else {
+      this.errorReply = true;
     }
   }
 
