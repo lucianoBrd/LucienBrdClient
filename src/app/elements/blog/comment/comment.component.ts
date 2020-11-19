@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Comment } from 'src/app/shared/models/comment.interface';
@@ -24,6 +25,8 @@ export class CommentComponent implements OnInit, OnDestroy {
   public imagePath: String;
   public language: Language;
 
+  public replyComment: Comment;
+
   private name: String;
   private email: String;
   private message: String;
@@ -44,6 +47,7 @@ export class CommentComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private textService: TextService,
     private formService: FormService,
+    private modalService: NgbModal
   ) { 
     this.language = this.textService.getTextByLocal();
     this.siteKey = this.formService.getSiteKey();
@@ -52,7 +56,7 @@ export class CommentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.hasSent = false;
-      
+
       /* Get slug */
       this.slug = params['slug'];
 
@@ -131,6 +135,12 @@ export class CommentComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
     this.sub.unsubscribe();
+  }
+
+  openVerticallyCentered(content, id: number) {
+    this.replyComment = this.comments.find(x => x.id === id);;
+
+    this.modalService.open(content, { centered: true, size: 'lg' });
   }
 
 }

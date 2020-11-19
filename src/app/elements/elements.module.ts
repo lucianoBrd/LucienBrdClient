@@ -25,7 +25,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
 import { DownloadComponent } from './download/download.component';
-import { CommentComponent } from './blog/post/comment/comment.component';
+import { CommentComponent } from './blog/comment/comment.component';
 
 @NgModule({
   declarations: [

@@ -27,7 +27,7 @@
                                     {{comment.message}}
                                 </p>
                             </div>
-                            <a href="#" class="link-btn">
+                            <a href="javascript:void(0)" class="link-btn" (click)="openVerticallyCentered(content, comment.id)">
                                 <i class="fa fa-reply"></i>
                                 {{language.reply}}
                             </a>
@@ -42,6 +42,25 @@
 <div *ngIf="!comments" class="comment-list blog_comment">
     <app-loader-bis></app-loader-bis>
 </div>
+
+<ng-template #content let-modal>
+    <div class="login-modal">
+        <div class="modal-header">
+            <button aria-label="Close" (click)="modal.dismiss('Cross click')" class="close"
+                data-dismiss="modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body text-center">
+            <h3 class="m-b-20">{{replyComment.user.name}}</h3>
+            test 
+            <a aria-label="Close" class="btn btn-default primary-btn m-t-20" (click)="modal.dismiss('Cross click')" data-dismiss="modal">
+                {{language.close}}
+            </a>
+        </div>
+    </div>
+</ng-template>
+
 <!-- Comment Sec End -->
 <div class="quote_2 comment_form_sec">
     <div class="container">
