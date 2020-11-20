@@ -6,6 +6,7 @@ import { Language } from 'src/app/shared/models/language.interface';
 import { TextService } from 'src/app/shared/service/text.service';
 import { FormService } from 'src/app/shared/service/form.service';
 import { LanguageService } from 'src/app/shared/service/language.service';
+import { AlertService } from 'src/app/shared/service/alert.service';
 
 @Component({
   selector: 'app-contact',
@@ -34,6 +35,7 @@ export class ContactComponent implements OnInit {
     private metaService: MetaService, 
     private textService: TextService,
     private formService: FormService,
+    private alertService: AlertService,
   ) { 
     this.language = this.textService.getTextByLocal();
     this.siteKey = this.formService.getSiteKey();
@@ -78,8 +80,10 @@ export class ContactComponent implements OnInit {
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;
+            this.alertService.showError(this.language.contactError);
           } else {
             this.hasSent = true;
+            this.alertService.showSuccess(this.language.contactSuccess);
             contactForm.resetForm();
           }
           this.sending = false;

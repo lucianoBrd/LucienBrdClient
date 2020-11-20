@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Comment } from 'src/app/shared/models/comment.interface';
 import { Language } from 'src/app/shared/models/language.interface';
+import { AlertService } from 'src/app/shared/service/alert.service';
 import { DataService } from 'src/app/shared/service/data.service';
 import { FormService } from 'src/app/shared/service/form.service';
 import { LanguageService } from 'src/app/shared/service/language.service';
@@ -52,7 +53,8 @@ export class CommentComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private textService: TextService,
     private formService: FormService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private alertService: AlertService,
   ) {
     this.languageCode = LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
@@ -120,8 +122,10 @@ export class CommentComponent implements OnInit, OnDestroy {
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;
+            this.alertService.showError(this.language.contactError);
           } else {
             this.hasSent = true;
+            this.alertService.showSuccess(this.language.commentSuccess);
             commentForm.resetForm();
             /* Refresh comments */
             this.getComments();
@@ -162,8 +166,10 @@ export class CommentComponent implements OnInit, OnDestroy {
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;
+            this.alertService.showError(this.language.contactError);
           } else {
             this.hasSent = true;
+            this.alertService.showSuccess(this.language.commentSuccess);
             commentFormReply.resetForm();
             /* Refresh comments */
             this.getComments();

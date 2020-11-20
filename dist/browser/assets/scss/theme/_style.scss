@@ -58,6 +58,14 @@
 /**************************
  1. general css start
 *************************/
+.toast-container {
+  .toast-success {
+    background-color: #59886b;
+  }
+  .toast-error {
+    background-color: #c05555;
+  }
+}
 .cookie-law-wrapper .copy {
   background-image: linear-gradient($dark,$light);
   font-family: 'Poppins', sans-serif;

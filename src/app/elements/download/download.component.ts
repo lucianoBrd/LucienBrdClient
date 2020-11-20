@@ -7,6 +7,7 @@ import { TextService } from 'src/app/shared/service/text.service';
 import { FormService } from 'src/app/shared/service/form.service';
 import { ActivatedRoute } from '@angular/router';
 import { LanguageService } from 'src/app/shared/service/language.service';
+import { AlertService } from 'src/app/shared/service/alert.service';
 
 @Component({
   selector: 'app-download',
@@ -39,6 +40,7 @@ export class DownloadComponent implements OnInit, OnDestroy {
     private textService: TextService,
     private formService: FormService,
     private route: ActivatedRoute,
+    private alertService: AlertService,
   ) { 
     this.language = this.textService.getTextByLocal();
     this.siteKey = this.formService.getSiteKey();
@@ -61,6 +63,7 @@ export class DownloadComponent implements OnInit, OnDestroy {
       this.file = params['file'];
       if (!this.file) {
         this.error = true;
+        this.alertService.showError(this.language.contactError);
       } else {
         /* Set title + meta */
         this.metaService.setTitle(this.language.download + ' ' + this.file);
@@ -96,8 +99,10 @@ export class DownloadComponent implements OnInit, OnDestroy {
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;
+            this.alertService.showError(this.language.contactError);
           } else {
             this.hasSent = true;
+            this.alertService.showSuccess(this.language.receiveSuccess);
             downloadForm.resetForm();
           }
           this.sending = false;

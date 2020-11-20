@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LanguageService } from './shared/service/language.service';
+import { ToastrModule } from 'ngx-toastr';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -37,6 +38,7 @@ registerLocaleData(localeFr);
     RecaptchaModule,
     RecaptchaFormsModule,
     CookieLawModule,
+    ToastrModule.forRoot(),
     MarkdownModule.forRoot({
       loader: HttpClient,
       sanitize: SecurityContext.NONE
