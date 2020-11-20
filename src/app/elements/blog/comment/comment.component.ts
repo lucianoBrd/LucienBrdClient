@@ -8,6 +8,7 @@ import { Comment } from 'src/app/shared/models/comment.interface';
 import { Language } from 'src/app/shared/models/language.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { FormService } from 'src/app/shared/service/form.service';
+import { LanguageService } from 'src/app/shared/service/language.service';
 import { TextService } from 'src/app/shared/service/text.service';
 
 @Component({
@@ -19,6 +20,8 @@ import { TextService } from 'src/app/shared/service/text.service';
 export class CommentComponent implements OnInit, OnDestroy {
 
   private sub: any;
+
+  private languageCode: string;
 
   public slug: String;
   public comments: Comment[];
@@ -50,7 +53,8 @@ export class CommentComponent implements OnInit, OnDestroy {
     private textService: TextService,
     private formService: FormService,
     private modalService: NgbModal
-  ) { 
+  ) {
+    this.languageCode = LanguageService.getLanguageCodeOnly();
     this.language = this.textService.getTextByLocal();
     this.siteKey = this.formService.getSiteKey();
   }
@@ -112,7 +116,7 @@ export class CommentComponent implements OnInit, OnDestroy {
           message: this.message,
           post: this.slug
         };
-        this.dataService.PAGE = '/comment';
+        this.dataService.PAGE = '/comment/new/' + this.languageCode;
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;
@@ -154,7 +158,7 @@ export class CommentComponent implements OnInit, OnDestroy {
           post: this.slug,
           reply: this.replyComment.id,
         };
-        this.dataService.PAGE = '/comment/reply';
+        this.dataService.PAGE = '/comment/reply/' + this.languageCode;
         this.dataService.sendGetRequest().subscribe((data: any[]) => {
           if (data['error'] == true) {
             this.hasSentError = true;

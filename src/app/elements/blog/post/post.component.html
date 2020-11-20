@@ -37,8 +37,15 @@
                 </div>
                 <div class="blog-text m-t-20">
 
-                    <h6>
+                    <h6 *ngIf="!blog.date.date">
                         {{blog.date | date}}
+                        <p class="pull-right">
+                            <i class="fa fa-tags m-r-10" aria-hidden="true"></i>
+                            <a class="m-r-15" *ngFor="let tag of blog.tags" [routerLink]="['/blog/tag', tag.slug]">{{tag.title}}</a>
+                        </p>
+                    </h6>
+                    <h6 *ngIf="blog.date.date">
+                        {{blog.date.date | date}}
                         <p class="pull-right">
                             <i class="fa fa-tags m-r-10" aria-hidden="true"></i>
                             <a class="m-r-15" *ngFor="let tag of blog.tags" [routerLink]="['/blog/tag', tag.slug]">{{tag.title}}</a>

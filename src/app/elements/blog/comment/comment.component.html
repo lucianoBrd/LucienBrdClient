@@ -22,7 +22,8 @@
                                         <h6>{{comment.user.name}}</h6>
                                     </div>
                                     <div class="comment-date"><i class="fa fa-clock-o"></i>
-                                        <h6>{{comment.date | date}}</h6>
+                                        <h6 *ngIf="!comment.date.date">{{comment.date | date}}</h6>
+                                        <h6 *ngIf="comment.date.date">{{comment.date.date | date}}</h6>
                                     </div>
                                 </div>
                                 <div class="comment-post">
@@ -58,7 +59,8 @@
                                         <h6>{{c.user.name}}</h6>
                                     </div>
                                     <div class="comment-date"><i class="fa fa-clock-o"></i>
-                                        <h6>{{c.date | date}}</h6>
+                                        <h6 *ngIf="!c.date.date">{{c.date | date}}</h6>
+                                        <h6 *ngIf="c.date.date">{{c.date.date | date}}</h6>
                                     </div>
                                 </div>
                                 <div class="comment-post">
@@ -152,7 +154,8 @@
                                                 <h6>{{replyComment.user.name}}</h6>
                                             </div>
                                             <div class="comment-date"><i class="fa fa-clock-o"></i>
-                                                <h6>{{replyComment.date | date}}</h6>
+                                                <h6 *ngIf="!replyComment.date.date">{{replyComment.date | date}}</h6>
+                                                <h6 *ngIf="replyComment.date.date">{{replyComment.date.date | date}}</h6>
                                             </div>
                                         </div>
                                         <div class="comment-post">
@@ -182,7 +185,8 @@
                                                 <h6>{{c.user.name}}</h6>
                                             </div>
                                             <div class="comment-date"><i class="fa fa-clock-o"></i>
-                                                <h6>{{c.date | date}}</h6>
+                                                <h6 *ngIf="!c.date.date">{{c.date | date}}</h6>
+                                                <h6 *ngIf="c.date.date">{{c.date.date | date}}</h6>
                                             </div>
                                         </div>
                                         <div class="comment-post">
