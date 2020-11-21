@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgxMasonryOptions } from 'ngx-masonry';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, map, takeUntil } from 'rxjs/operators';
 import { Blog } from 'src/app/shared/models/blog.interface';
 import { Language } from 'src/app/shared/models/language.interface';
+import { Tag } from 'src/app/shared/models/tag.interface';
 import { DataService } from 'src/app/shared/service/data.service';
 import { LanguageService } from 'src/app/shared/service/language.service';
 import { MetaService } from 'src/app/shared/service/meta.service';
@@ -24,10 +26,14 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   public tag: String;
   public blogs: Blog[];
+  private results: Blog[];
   public imagePath: String;
   public language: Language;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
+
+  search = new FormControl();
+  search$: Observable<string> = this.search.valueChanges;
 
   public myOptions: NgxMasonryOptions = {
     transitionDuration: '0.8s',
@@ -52,6 +58,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.metaService.setDescription(this.language.blogDesc);
     this.sub = this.route.params.subscribe(params => {
       this.blogs = null;
+      this.results = null;
 
       /* Get tag */
       this.tag = params['tag'];
@@ -67,11 +74,59 @@ export class BlogComponent implements OnInit, OnDestroy {
       }
 
       this.dataService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[]) => {
-        this.blogs = data['blogs'] as Blog[];
+        this.results = data['blogs'] as Blog[];
         this.imagePath = data['imagePath'];
+        
+        this.sortResults();
+        
+        this.blogs = this.results;
+
+        /* Search in blogs */
+        this.search$
+        .pipe(
+          debounceTime(600),
+          map(term => this.results.filter(b => 
+              b.title.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1 || 
+              b.content.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1 ||
+              b.slug.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1 ||
+              this.checkTags(b.tags, term)
+            )
+          ),
+        )
+        .subscribe(
+          data => {this.blogs = data; this.sortBlogs();}
+        );
       })
     });
 
+  }
+
+  private checkTags(tags: Tag[], term) {
+    var result = false;
+    tags.forEach(tag => {
+      result = result || tag.title.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1;
+    });
+    return result;
+  }
+
+  private sortBlogs() {
+    this.blogs.sort(
+      function(a,b){
+        return b.date.getDate() - a.date.getDate();
+      }
+    );
+  }
+
+  private sortResults() {
+    this.results.sort(
+      function(a,b){
+        return b.date.getDate() - a.date.getDate();
+      }
+    );
+  }
+
+  trackById(blog: Blog) {
+    return blog.id;
   }
 
   ngOnDestroy() {

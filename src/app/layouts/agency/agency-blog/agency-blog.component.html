@@ -31,8 +31,7 @@
                                                     <div class="center-text">
                                                         <i class="fa fa-clock-o"
                                                             aria-hidden="true"></i>
-                                                        <h6 *ngIf="!blog.date.date" class="m-r-25 font-blog">{{blog.date | date}}</h6>
-                                                        <h6 *ngIf="blog.date.date" class="m-r-25 font-blog">{{blog.date.date | date}}</h6>
+                                                        <h6 class="m-r-25 font-blog">{{blog.date | date}}</h6>
                                                         <i class="fa fa-tags" aria-hidden="true"></i>
                                                         <h6 class="m-r-15 font-blog" *ngFor="let tag of blog.tags">
                                                             <a [routerLink]="['/blog/tag', tag.slug]">{{tag.title}}</a>

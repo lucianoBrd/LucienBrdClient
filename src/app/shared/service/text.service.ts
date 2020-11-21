@@ -119,6 +119,7 @@ export class TextService {
       reply: 'Répondre',
       commentMessage: 'Votre commentaire',
       commentSuccess: 'Merci pour votre commentaire',
+      search: 'Rechercher',
     };
   }
 
@@ -208,6 +209,7 @@ export class TextService {
       reply: 'Reply',
       commentMessage: 'Your comment',
       commentSuccess: 'Thank you for your comment',
+      search: 'Search',
     };
   }
 

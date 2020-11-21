@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOCALE_ID, NgModule, SecurityContext } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +18,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LanguageService } from './shared/service/language.service';
 import { ToastrModule } from 'ngx-toastr';
+import { JsonDateInterceptorService } from './shared/service/jsonDateInterceptor.service';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -48,7 +49,8 @@ registerLocaleData(localeFr);
   ],
   providers: [
     LanguageService,
-    { provide: LOCALE_ID, useValue: LanguageService.getLanguage() }
+    { provide: LOCALE_ID, useValue: LanguageService.getLanguage() },
+    {provide: HTTP_INTERCEPTORS, useClass: JsonDateInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

@@ -15,10 +15,10 @@ import { LayoutsModule } from '../layouts/layouts.module'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { CvComponent } from './cv/cv.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaComponent, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { MarkdownModule } from 'ngx-markdown';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityContext } from '@angular/core';
 import { BlogComponent } from './blog/blog.component';
 import { NgxMasonryModule } from 'ngx-masonry';
@@ -26,6 +26,7 @@ import { SidebarComponent } from './blog/sidebar/sidebar.component';
 import { PostComponent } from './blog/post/post.component';
 import { DownloadComponent } from './download/download.component';
 import { CommentComponent } from './blog/comment/comment.component';
+import { JsonDateInterceptorService } from '../shared/service/jsonDateInterceptor.service';
 
 RecaptchaComponent.prototype.ngOnDestroy = function() {
   if (this.subscription) {
@@ -54,6 +55,7 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
     SharedModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     CarouselModule,
     CountToModule,
     LayoutsModule,
@@ -64,6 +66,9 @@ RecaptchaComponent.prototype.ngOnDestroy = function() {
       loader: HttpClient,
       sanitize: SecurityContext.NONE
     }),
-  ]
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JsonDateInterceptorService, multi: true}
+  ],
 })
 export class ElementsModule { }

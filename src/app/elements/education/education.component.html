@@ -27,8 +27,7 @@
                     </div>
                     <div class="event-info center-content">
                         <h4 class="text-white address">{{education.title}}</h4>
-                        <h6 *ngIf="!education.date.date" class="text-white time">{{education.date}}</h6>
-                        <h6 *ngIf="education.date.date" class="text-white time">{{education.date.date | date}}</h6>
+                        <h6 class="text-white time">{{education.date}}</h6>
                         <h6 class="text-white city">
                             <i class="fa fa-map-marker m-r-5" aria-hidden="true"></i>
                             {{education.place}}
