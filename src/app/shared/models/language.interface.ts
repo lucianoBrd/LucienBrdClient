@@ -79,4 +79,6 @@ export interface Language {
     commentMessage: string,
     commentSuccess: string,
     search: string,
+    subscribe: string,
+    subscribeSuccess: string,
 }

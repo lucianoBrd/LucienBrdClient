@@ -31,6 +31,7 @@ import { LayoutsRoutingModule } from './layouts-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AgencyTagComponent } from './agency/agency-tag/agency-tag.component';
+import { FormsModule } from '@angular/forms';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
@@ -54,6 +55,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {};
     MasonryGalleryModule,
     Ng5SliderModule,
     NgxMasonryModule,
+    FormsModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       sanitize: SecurityContext.NONE

@@ -120,6 +120,8 @@ export class TextService {
       commentMessage: 'Votre commentaire',
       commentSuccess: 'Merci pour votre commentaire',
       search: 'Rechercher',
+      subscribe: 'S\'abonner',
+      subscribeSuccess: 'Merci de vous être abonné.',
     };
   }
 
@@ -210,6 +212,8 @@ export class TextService {
       commentMessage: 'Your comment',
       commentSuccess: 'Thank you for your comment',
       search: 'Search',
+      subscribe: 'Subscribe',
+      subscribeSuccess: 'Thank you for subscribing.',
     };
   }
 
