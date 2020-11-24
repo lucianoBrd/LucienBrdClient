@@ -26,6 +26,8 @@ export class CustomizerService {
     if (lc){
       this.data.settings.languageCode = lc;
     }
+    /* Change lang attribute */
+    document.documentElement.lang = this.data.settings.languageCode;
   }
 
   // Configration Layout
